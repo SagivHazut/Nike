@@ -61,13 +61,11 @@ export default function Transactions() {
                 <div>
                   {item.cartItems.map((item, index) => (
                     <p>
-                      {" "}
-                      <img
+                      {/* <img
                         src={item.item.image1}
                         alt=""
                         style={{ width: "6vw", height: "10vh" }}
-                      />
-                      <br />
+                      /> */}
                       {item.item.name}
                       <br /> {item.item.phone}
                     </p>

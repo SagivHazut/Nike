@@ -1,16 +1,12 @@
 import { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { CardActions, IconButton } from "@material-ui/core";
-import { AddShoppingCart } from "@material-ui/icons";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
-import { RemoveShoppingCart } from "@material-ui/icons";
+import * as React from "react";
 
 const CardInfoPage = (props) => {
   const { id } = useParams();
   const [cardArr, setCardArr] = useState([]);
-  const { handleBuyButtonClick, handleRemoveButtonClick, item } = props;
+  const { handleBuyButtonClick, handleRemoveButtonClick } = props;
 
   useEffect(() => {
     axios
@@ -20,99 +16,75 @@ const CardInfoPage = (props) => {
       })
 
       .catch((err) => {});
-  }, []);
-  console.log(cardArr);
+  }, [id]);
 
   return (
-    <div>
-      <div
-        style={{
-          textAlign: "center",
-          display: "block",
-          zIndex: 3,
-          width: "68%",
-          position: "absolute",
-        }}
-      >
-        <h5>{cardArr.name}</h5> <h5>{cardArr.description}</h5>{" "}
-        <h6>${cardArr.phone}</h6>
-        <CardActions
-          disableSpacing
-          style={{
-            justifyContent: "space-between",
-            margin: "0 auto",
-            width: "50%",
-            display: "flex",
-          }}
-          color="secondary"
-        >
-          <IconButton
-            color="secondary"
-            aria-label="Add to Cart"
-            onClick={() => {
-              handleRemoveButtonClick();
-            }}
-          >
-            <h6>Remove to Cart</h6>
-          </IconButton>
-          <IconButton
-            to="/nike/cart"
-            aria-label="Show cart items"
-            color="secondary"
-            className="cart"
-            onClick={() => {
-              handleBuyButtonClick(item);
-            }}
-          >
-            <h6>Add to Cart</h6>
-          </IconButton>
-        </CardActions>
-      </div>
-      <div style={{ width: "35%", marginLeft: "auto" }}>
+    <div style={{ justifyContent: "space-between", display: "flex" }}>
+      <div style={{ marginLeft: "auto", display: "flex" }}>
         <Fragment key={cardArr.index}>
-          <div className="col">
-            <Carousel
-              className="main-slide"
-              interval={5000}
-              showStatus={false}
-              dynamicHeight={true}
-              showThumbs={true}
-              showArrows={true}
-              showIndicator={true}
+          <div
+            style={{
+              textAlign: "center",
+              zIndex: 3,
+              width: "68%",
+            }}
+          >
+            <h5 className="card-title">{cardArr.name}</h5>{" "}
+            <h5 className="card-body ">{cardArr.description}</h5>{" "}
+            <h6 className="card-subtitle mb-2 font-bolder">${cardArr.phone}</h6>
+            <div
+              style={{
+                justifyContent: "space-evenly",
+                display: "flex",
+              }}
             >
-              <div className="image">
-                <img
-                  style={{ textAlign: "center" }}
-                  src={cardArr.image}
-                  className="card-img-top "
-                  alt="..."
-                />
-              </div>
-              <div className="image">
-                <img
-                  style={{ textAlign: "center" }}
-                  src={cardArr.image1}
-                  className="card-img-top "
-                  alt="..."
-                />
-              </div>
-              <div className="image">
-                <img
-                  style={{ textAlign: "center" }}
-                  src={cardArr.image2}
-                  className="card-img-top "
-                  alt="..."
-                />
-              </div>
-              <div className="image">
-                <img
-                  style={{ textAlign: "center" }}
-                  src={cardArr.image3}
-                  className="card-img-top "
-                  alt="..."
-                />
-              </div>
-            </Carousel>
+              <button
+                style={{ width: "10%", height: "10%" }}
+                type="button"
+                class="btn btn-primary btn-lg"
+                onClick={() => {
+                  handleRemoveButtonClick();
+                }}
+              >
+                {" "}
+                <h6>Remove to Cart</h6>
+              </button>
+              <button
+                style={{ width: "10%", height: "10%" }}
+                onClick={() => {
+                  handleBuyButtonClick(cardArr);
+                }}
+                type="button"
+                class="btn btn-primary btn-lg"
+              >
+                <h6>Add to Cart</h6>
+              </button>
+            </div>
+          </div>
+
+          <div className="col" style={{ textAlign: "right", top: "0" }}>
+            <div>
+              <img
+                src={cardArr.image}
+                alt=""
+                style={{ width: "48%", margin: " 1%" }}
+              />
+              <img
+                src={cardArr.image1}
+                alt=""
+                style={{ width: "48%", margin: " 1%" }}
+              />
+            </div>
+            <img
+              src={cardArr.image2}
+              alt=""
+              style={{ width: "48%", margin: " 1%" }}
+            />
+            <img
+              src={cardArr.image3}
+              alt=""
+              style={{ width: "48%", margin: " 1%" }}
+            />
           </div>
         </Fragment>
       </div>

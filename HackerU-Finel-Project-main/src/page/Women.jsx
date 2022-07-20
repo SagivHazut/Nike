@@ -6,9 +6,17 @@ import { AddShoppingCart } from "@material-ui/icons";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import { RemoveShoppingCart } from "@material-ui/icons";
+import { useHistory } from "react-router-dom";
+
 const WomenStore = (props) => {
   const [cardsArr, setCardsArr] = useState([]);
   const { handleBuyButtonClick, handleRemoveButtonClick } = props;
+  const history = useHistory();
+
+  const ItemPage = (id) => {
+    cardsArr.filter((item) => item._id !== id);
+    history.push(`/nike/card/${id}`);
+  };
 
   useEffect(() => {
     axios
@@ -82,10 +90,15 @@ const WomenStore = (props) => {
                   showStatus={false}
                   dynamicHeight={true}
                   showThumbs={false}
-                  showArrows={false}
+                  showArrows={true}
                   showIndicator={false}
                 >
-                  <div className="image">
+                  <div
+                    className="image"
+                    onClick={() => {
+                      ItemPage(item._id);
+                    }}
+                  >
                     <img
                       style={{ textAlign: "center" }}
                       src={item.image}
@@ -93,7 +106,12 @@ const WomenStore = (props) => {
                       alt="..."
                     />
                   </div>
-                  <div className="image">
+                  <div
+                    className="image"
+                    onClick={() => {
+                      ItemPage(item._id);
+                    }}
+                  >
                     <img
                       style={{ textAlign: "center" }}
                       src={item.image1}
@@ -101,7 +119,12 @@ const WomenStore = (props) => {
                       alt="..."
                     />
                   </div>
-                  <div className="image">
+                  <div
+                    className="image"
+                    onClick={() => {
+                      ItemPage(item._id);
+                    }}
+                  >
                     <img
                       style={{ textAlign: "center" }}
                       src={item.image2}
@@ -109,7 +132,12 @@ const WomenStore = (props) => {
                       alt="..."
                     />
                   </div>
-                  <div className="image">
+                  <div
+                    className="image"
+                    onClick={() => {
+                      ItemPage(item._id);
+                    }}
+                  >
                     <img
                       style={{ textAlign: "center" }}
                       src={item.image3}

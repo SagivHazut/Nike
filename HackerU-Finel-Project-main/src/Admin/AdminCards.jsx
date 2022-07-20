@@ -199,10 +199,11 @@ const AdminCards = (props) => {
         style={{
           display: "flex",
           margin: "0 auto",
-          marginTop: "10px",
+          marginTop: "3%",
         }}
         type="button"
-        className="btn btn-secondary mb-2 mb-lg-0 btn-lg"
+        className="btn btn-outline-info btn-lg"
+        data-mdb-ripple-color="dark"
         onClick={() => history.push("/nike/cardregister")}
       >
         Add a New Card
