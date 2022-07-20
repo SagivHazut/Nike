@@ -1,0 +1,19 @@
+.activeLink {
+  background-color: rgb(0, 0, 0) !important;
+  border-radius: 33%;
+  color: rgb(255, 255, 255) !important;
+  width: 100px;
+  text-align: center;
+}
+
+.button {
+  direction: rtl;
+  justify-items: center;
+  position: relative;
+}
+
+@media (max-width: 1024px) {
+  .cart {
+    width: 10% !important;
+  }
+}

@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Beau+Rivage&family=Roboto:ital,wght@1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Tourney:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
+.homevideoTag {
+  width: 90%;
+  height: 90%;
+}
+.nav-links {
+  font-size: 1em;
+  font-family: "Beau Rivage", cursive;
+  font-family: "Pacifico", cursive;
+}
+.NikeImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  height: 100vh;
+}
+.nikeLogoStore {
+  width: 5vw;
+  height: 10vh;
+  border-radius: 33%;
+}
+.nikeLogoStore:hover {
+  transform: scale(1.5);
+}
+.overlay {
+  position: absolute;
+  bottom: 50%;
+  left: 0;
+  right: 0;
+  background-color: rgba(231, 213, 213, 0.6);
+  overflow: hidden;
+  width: 100%;
+  height: 0;
+  transition: 0.5s ease;
+}
+.nikecontainer {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  margin: 0.5%;
+}
+.imagesfirstrow {
+  justify-items: space-between;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+.nikecontainer:hover .overlay {
+  bottom: 0;
+  height: 100%;
+}
+.text {
+  color: black;
+  font-weight: 600;
+  font-size: 2em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: "Bungee Shade", cursive;
+}
+.nike {
+  text-align: center;
+  background-color: #fafafa;
+  margin: 0 auto;
+}
+.nike h1 {
+  font-size: 4em;
+  letter-spacing: 20px;
+  line-height: 10vh;
+}
+.jordan {
+  text-align: center;
+  background-color: #ffffff;
+}
+.jordan h6 {
+  line-height: 30px;
+  margin-bottom: 2%;
+}
+.jordan img {
+  max-width: 100%;
+  width: 5vw;
+}
+.main-slide {
+  width: 100%;
+  margin: 0 auto;
+}
+.main-slide div {
+  width: 70%;
+  margin: 0 auto;
+}
+.main-slide .thumbs-wrapper {
+  margin: 0 auto;
+}
+
+.doit {
+  height: 70vh;
+  width: 100%;
+  color: white;
+  background-color: black;
+  display: block;
+}
+.justdoit {
+  font-family: "Beau Rivage", cursive;
+  font-family: "Roboto", sans-serif;
+  color: white;
+  text-align: center;
+  top: 35%;
+  position: relative;
+  transform: translateY(19vh);
+  animation: scroll 3s infinite alternate-reverse;
+}
+.justdoit h1 {
+  font-size: 8em !important;
+}
+.justdoit img {
+  width: 20vw;
+}
+
+.colliction {
+  justify-items: center;
+  justify-items: space-between;
+}
+.colliction img {
+  width: 50%;
+  height: 100vh;
+}
+@keyframes scroll {
+  from {
+    transform: translateY(-35vh);
+  }
+  to {
+    transform: translateY(19vh);
+  }
+}
+
+@media (max-width: 1024px) {
+  .doit {
+    height: 50vh;
+    width: 100%;
+    color: white;
+    background-color: black;
+    display: block;
+  }
+  .justdoit {
+    font-family: "Beau Rivage", cursive;
+    font-family: "Roboto", sans-serif;
+    color: white;
+    text-align: center;
+    position: relative;
+    transform: translateY(19vh);
+    animation: scroll 3s infinite alternate-reverse;
+  }
+  .justdoit h1 {
+    font-size: 3em !important;
+  }
+
+  @keyframes scroll {
+    from {
+      transform: translateY(-20vh);
+    }
+    to {
+      transform: translateY(20vh);
+    }
+  }
+  .imagesfirstrow {
+    display: block;
+    margin: 0 auto;
+  }
+  .nikecontainer {
+    margin: 0 auto;
+    margin-top: 4%;
+  }
+  .image {
+    text-align: center;
+    margin: 0 auto;
+  }
+}
