@@ -94,6 +94,7 @@ const CardsPanelPage = (props) => {
                     onClick={() => {
                       ItemPage(item._id);
                     }}
+                    style={{ cursor: "-webkit-grab" }}
                   >
                     <img
                       style={{ textAlign: "center" }}
@@ -107,6 +108,7 @@ const CardsPanelPage = (props) => {
                     onClick={() => {
                       ItemPage(item._id);
                     }}
+                    style={{ cursor: "-webkit-grab" }}
                   >
                     <img
                       style={{ textAlign: "center" }}
@@ -120,6 +122,7 @@ const CardsPanelPage = (props) => {
                     onClick={() => {
                       ItemPage(item._id);
                     }}
+                    style={{ cursor: "-webkit-grab" }}
                   >
                     <img
                       style={{ textAlign: "center" }}
@@ -133,6 +136,7 @@ const CardsPanelPage = (props) => {
                     onClick={() => {
                       ItemPage(item._id);
                     }}
+                    style={{ cursor: "-webkit-grab" }}
                   >
                     <img
                       style={{ textAlign: "center" }}

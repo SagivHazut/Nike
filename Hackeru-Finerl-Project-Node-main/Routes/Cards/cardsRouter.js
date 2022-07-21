@@ -82,6 +82,7 @@ router.post("/women", auth, async (req, res) => {
       name: card.name,
       description: card.description,
       phone: card.phone,
+      size: card.size,
       image: card.image,
       image3: card.image3,
       image2: card.image2,

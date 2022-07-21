@@ -22,6 +22,7 @@ export default function Transactions() {
       setCardsArr(newCardsArr);
     });
   };
+
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Transactions</h1>

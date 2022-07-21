@@ -98,6 +98,7 @@ const WomenStore = (props) => {
                     onClick={() => {
                       ItemPage(item._id);
                     }}
+                    style={{ cursor: "-webkit-grab" }}
                   >
                     <img
                       style={{ textAlign: "center" }}
@@ -111,6 +112,7 @@ const WomenStore = (props) => {
                     onClick={() => {
                       ItemPage(item._id);
                     }}
+                    style={{ cursor: "-webkit-grab" }}
                   >
                     <img
                       style={{ textAlign: "center" }}
@@ -124,6 +126,7 @@ const WomenStore = (props) => {
                     onClick={() => {
                       ItemPage(item._id);
                     }}
+                    style={{ cursor: "-webkit-grab" }}
                   >
                     <img
                       style={{ textAlign: "center" }}
@@ -137,6 +140,7 @@ const WomenStore = (props) => {
                     onClick={() => {
                       ItemPage(item._id);
                     }}
+                    style={{ cursor: "-webkit-grab" }}
                   >
                     <img
                       style={{ textAlign: "center" }}

@@ -5,7 +5,6 @@ import { Button } from "@material-ui/core";
 
 export default function WebUsers() {
   const [cardsArr, setCardsArr] = useState([]);
-  const [itemArr, setItemArr] = useState([]);
   const URL = "http://localhost:8181/api/users/";
 
   useEffect(() => {
@@ -23,7 +22,6 @@ export default function WebUsers() {
       setCardsArr(newCardsArr);
     });
   };
-  console.log(itemArr);
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>Transactions</h1>

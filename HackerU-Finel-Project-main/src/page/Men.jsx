@@ -97,6 +97,8 @@ const MenStore = (props) => {
                     onClick={() => {
                       ItemPage(item._id);
                     }}
+                    style={{ cursor: "-webkit-grab" }}
+
                   >
                     <img
                       style={{ textAlign: "center" }}
@@ -110,6 +112,8 @@ const MenStore = (props) => {
                     onClick={() => {
                       ItemPage(item._id);
                     }}
+                    style={{ cursor: "-webkit-grab" }}
+
                   >
                     <img
                       style={{ textAlign: "center" }}
@@ -123,6 +127,8 @@ const MenStore = (props) => {
                     onClick={() => {
                       ItemPage(item._id);
                     }}
+                    style={{ cursor: "-webkit-grab" }}
+
                   >
                     <img
                       style={{ textAlign: "center" }}
@@ -136,6 +142,8 @@ const MenStore = (props) => {
                     onClick={() => {
                       ItemPage(item._id);
                     }}
+                    style={{ cursor: "-webkit-grab" }}
+
                   >
                     <img
                       style={{ textAlign: "center" }}

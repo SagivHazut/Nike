@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import { CardActions, IconButton } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import { RemoveShoppingCart } from "@material-ui/icons";
+import Autocomplete from "@mui/material/Autocomplete";
 
 export const NikeStore = (props) => {
   const [filter, setFilter] = useState("");
@@ -14,6 +15,7 @@ export const NikeStore = (props) => {
   const searchText = (event) => {
     setFilter(event.target.value);
   };
+
   useEffect(() => {
     axios
       .get("/cards/allCards")
@@ -29,6 +31,9 @@ export const NikeStore = (props) => {
         // + item.phone
         .includes(filter.toLowerCase() || Number(filter))
     );
+  });
+  let autoFill = cardsArr.map((item) => {
+    return item.name;
   });
 
   return (
@@ -55,18 +60,22 @@ export const NikeStore = (props) => {
           </ul>
         </div>
       </nav>
-      <TextField
-        style={{ width: "33%", margin: "1%" }}
-        id="demo-helper-text-misaligned-no-helper"
-        label="Search"
-        className=" mr-sm-2"
-        type="search"
-        placeholder="Search..."
-        aria-label="Search"
-        value={filter}
-        onChange={(e) => searchText(e)}
-      />
 
+      <Autocomplete
+        style={{ width: "33%", margin: "1%" }}
+        disablePortal
+        id="combo-box-demo"
+        value={filter}
+        options={autoFill}
+        sx={{ width: 300 }}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label="Search your Shoes"
+            onChange={(e) => searchText(e)}
+          />
+        )}
+      />
       <br />
       <div className="row justify-content-center">
         {dataSearch.map((item, index) => {
@@ -92,7 +101,7 @@ export const NikeStore = (props) => {
                       color="secondary"
                       aria-label="Add to Cart"
                       onClick={() => {
-                        handleRemoveButtonClick(item);
+                        handleRemoveButtonClick();
                       }}
                     >
                       <RemoveShoppingCart />

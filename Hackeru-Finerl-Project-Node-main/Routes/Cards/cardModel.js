@@ -59,6 +59,9 @@ const cardSchema = new mongoose.Schema({
     maxlength: 7,
     unique: true,
   },
+  size: {
+    type: String,
+  },
   MenCollation: {
     type: String,
   },

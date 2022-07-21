@@ -10,8 +10,7 @@ import { Carousel } from "react-responsive-carousel";
 const AdminCards = (props) => {
   const history = useHistory();
 
-  const URL = "http://localhost:8181/api/cards/";
-  const userInfoRedux = useSelector((state) => state.auth.userData);
+  const URL = "http://localhost:8181/api/cards/"
   const [cardsArr, setCardsArr] = useState([]);
   const IsloggedInRedux = useSelector((state) => state.auth.loggedIn);
   const [userArr] = useState([]);
@@ -28,7 +27,7 @@ const AdminCards = (props) => {
 
   const handleEditUser = (id) => {
     let newUser = userArr.find((item) => {
-      return item._id === id;
+      return item._id !== id;
     });
 
     setSelectedUser({ ...newUser });
@@ -165,7 +164,7 @@ const AdminCards = (props) => {
                     color="error"
                     type="button"
                     className="btn btn-outline-primary"
-                    onClick={handleEditUser}
+                    onClick={() => handleEditUser(item._id)}
                   >
                     Edit
                   </Button>

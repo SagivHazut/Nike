@@ -9,6 +9,7 @@ function validateCard(card) {
     image2: Joi.string().min(11).max(256),
     image3: Joi.string().min(11).max(256),
     image: Joi.string().min(11).max(256),
+    size: Joi.string().min(11).max(256),
     MenCollation: Joi.string().min(11).max(256),
     WomenCollation: Joi.string().min(11).max(256),
   });

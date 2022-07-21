@@ -2,11 +2,13 @@ import { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import * as React from "react";
+import "photoswipe/dist/photoswipe.css";
+import { Gallery, Item } from "react-photoswipe-gallery";
 
 const CardInfoPage = (props) => {
   const { id } = useParams();
   const [cardArr, setCardArr] = useState([]);
-  const { handleBuyButtonClick, handleRemoveButtonClick } = props;
+  const { handleBuyButtonClick } = props;
 
   useEffect(() => {
     axios
@@ -25,8 +27,7 @@ const CardInfoPage = (props) => {
           <div
             style={{
               textAlign: "center",
-              zIndex: 3,
-              width: "68%",
+              width: "65%",
             }}
           >
             <h5 className="card-title">{cardArr.name}</h5>{" "}
@@ -39,52 +40,90 @@ const CardInfoPage = (props) => {
               }}
             >
               <button
-                style={{ width: "10%", height: "10%" }}
-                type="button"
-                class="btn btn-primary btn-lg"
-                onClick={() => {
-                  handleRemoveButtonClick();
-                }}
-              >
-                {" "}
-                <h6>Remove to Cart</h6>
-              </button>
-              <button
-                style={{ width: "10%", height: "10%" }}
                 onClick={() => {
                   handleBuyButtonClick(cardArr);
                 }}
                 type="button"
-                class="btn btn-primary btn-lg"
+                class="btn btn-dark btn-lg"
               >
                 <h6>Add to Cart</h6>
               </button>
             </div>
           </div>
 
-          <div className="col" style={{ textAlign: "right", top: "0" }}>
-            <div>
-              <img
-                src={cardArr.image}
-                alt=""
-                style={{ width: "48%", margin: " 1%" }}
-              />
-              <img
-                src={cardArr.image1}
-                alt=""
-                style={{ width: "48%", margin: " 1%" }}
-              />
-            </div>
-            <img
-              src={cardArr.image2}
-              alt=""
-              style={{ width: "48%", margin: " 1%" }}
-            />
-            <img
-              src={cardArr.image3}
-              alt=""
-              style={{ width: "48%", margin: " 1%" }}
-            />
+          <div
+            style={{
+              textAlign: "right",
+              display: "flex",
+              width: "50%",
+            }}
+          >
+            <Gallery>
+              <div class="row">
+                <Item
+                  original={cardArr.image1}
+                  thumbnail={cardArr.image1}
+                  width="900"
+                  height="650"
+                >
+                  {({ ref, open }) => (
+                    <img
+                      ref={ref}
+                      onClick={open}
+                      src={cardArr.image1}
+                      style={{ margin: "1%", width: "98%", cursor: "zoom-in" }}
+                    />
+                  )}
+                </Item>
+                <Item
+                  original={cardArr.image2}
+                  thumbnail={cardArr.image2}
+                  width="900"
+                  height="650"
+                >
+                  {({ ref, open }) => (
+                    <img
+                      ref={ref}
+                      onClick={open}
+                      src={cardArr.image2}
+                      style={{ margin: "1%", width: "98%", cursor: "zoom-in" }}
+                    />
+                  )}
+                </Item>
+              </div>
+              <div class="row">
+                <Item
+                  original={cardArr.image3}
+                  thumbnail={cardArr.image3}
+                  width="900"
+                  height="650"
+                >
+                  {({ ref, open }) => (
+                    <img
+                      ref={ref}
+                      onClick={open}
+                      src={cardArr.image3}
+                      style={{ margin: "1%", width: "98%", cursor: "zoom-in" }}
+                    />
+                  )}
+                </Item>{" "}
+                <Item
+                  original={cardArr.image}
+                  thumbnail={cardArr.image}
+                  width="900"
+                  height="650"
+                >
+                  {({ ref, open }) => (
+                    <img
+                      ref={ref}
+                      onClick={open}
+                      src={cardArr.image}
+                      style={{ margin: "1%", width: "98%", cursor: "zoom-in" }}
+                    />
+                  )}
+                </Item>
+              </div>
+            </Gallery>
           </div>
         </Fragment>
       </div>
