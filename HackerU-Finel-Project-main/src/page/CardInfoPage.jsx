@@ -30,8 +30,18 @@ const CardInfoPage = (props) => {
               width: "65%",
             }}
           >
-            <h5 className="card-title">{cardArr.name}</h5>{" "}
-            <h5 className="card-body ">{cardArr.description}</h5>{" "}
+            <h3 className="card-title">{cardArr.name}</h3>{" "}
+            <p
+              className="card-body "
+              style={{
+                width: "40%",
+                margin: "0 auto",
+                height: "50vh",
+                fontWeight: "300",
+              }}
+            >
+              {cardArr.description}
+            </p>{" "}
             <h6 className="card-subtitle mb-2 font-bolder">${cardArr.phone}</h6>
             <div
               style={{

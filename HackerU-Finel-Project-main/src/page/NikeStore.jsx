@@ -2,15 +2,11 @@ import React, { Fragment, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
-import { CardActions, IconButton } from "@material-ui/core";
-import { AddShoppingCart } from "@material-ui/icons";
-import { RemoveShoppingCart } from "@material-ui/icons";
 import Autocomplete from "@mui/material/Autocomplete";
 
-export const NikeStore = (props) => {
+const NikeStore = () => {
   const [filter, setFilter] = useState("");
   const [cardsArr, setCardsArr] = useState([]);
-  const { handleBuyButtonClick, handleRemoveButtonClick } = props;
 
   const searchText = (event) => {
     setFilter(event.target.value);
@@ -87,37 +83,37 @@ export const NikeStore = (props) => {
                   <h5 className="card-title">{item.name}</h5>
                   <p className="card-text">{item.description}</p>
                   <p className="card-text">${item.phone}</p>
-                  <CardActions
-                    disableSpacing
-                    style={{
-                      justifyContent: "space-between",
-                      margin: "0 auto",
-                      width: "50%",
-                      display: "flex",
-                    }}
-                    color="secondary"
-                  >
-                    <IconButton
-                      color="secondary"
-                      aria-label="Add to Cart"
-                      onClick={() => {
-                        handleRemoveButtonClick();
+                  {/* <CardActions
+                      disableSpacing
+                      style={{
+                        justifyContent: "space-between",
+                        margin: "0 auto",
+                        width: "50%",
+                        display: "flex",
                       }}
-                    >
-                      <RemoveShoppingCart />
-                    </IconButton>
-                    <IconButton
-                      to="/nike/cart"
-                      aria-label="Show cart items"
                       color="secondary"
-                      className="cart"
-                      onClick={() => {
-                        handleBuyButtonClick(item);
-                      }}
                     >
-                      <AddShoppingCart />
-                    </IconButton>
-                  </CardActions>
+                      <IconButton
+                        color="secondary"
+                        aria-label="Add to Cart"
+                        onClick={() => {
+                          handleRemoveButtonClick();
+                        }}
+                      >
+                        <RemoveShoppingCart />
+                      </IconButton>
+                      <IconButton
+                        to="/nike/cart"
+                        aria-label="Show cart items"
+                        color="secondary"
+                        className="cart"
+                        onClick={() => {
+                          handleBuyButtonClick();
+                        }}
+                      >
+                        <AddShoppingCart />
+                      </IconButton>
+                    </CardActions> */}
                 </div>
               </div>
             </div>
@@ -127,3 +123,4 @@ export const NikeStore = (props) => {
     </Fragment>
   );
 };
+export default NikeStore;

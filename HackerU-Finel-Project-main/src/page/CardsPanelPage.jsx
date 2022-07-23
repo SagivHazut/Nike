@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment } from "react";
 import axios from "axios";
-import { NikeStore } from "./NikeStore";
+import NikeStore from "./NikeStore";
 import { CardActions, IconButton } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -173,7 +173,7 @@ const CardsPanelPage = (props) => {
                     color="secondary"
                     aria-label="Add to Cart"
                     onClick={() => {
-                      handleRemoveButtonClick();
+                      handleRemoveButtonClick(item);
                     }}
                   >
                     <RemoveShoppingCart />

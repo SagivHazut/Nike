@@ -18,7 +18,7 @@ import NotFoundPage from "./page/NotFoundPage";
 import AuthRegister from "./components/AuthRegister";
 import AboutPage from "./page/Aboutpage";
 import Footer from "./page/Footer";
-import { NikeStore } from "./page/NikeStore";
+import NikeStore from "./page/NikeStore";
 import Basket from "./page/Basket";
 import RestPassword from "./page/RestPass";
 import ChangePass from "./page/ChangePass";
@@ -36,15 +36,13 @@ function Userui() {
     const currentShoppingCart = [...shoppingCart];
     currentShoppingCart.push({ item, date });
     setShoppingCart(currentShoppingCart);
-
-    console.log(currentShoppingCart);
   };
-  const RemoveItemToShoppingCart = () =>
-    setShoppingCart((shoppingCart) =>
-      shoppingCart.filter((shoppingCart) => {
-        return shoppingCart.date !== date;
-      })
-    );
+  const arrDate = shoppingCart.map((item) => item.date);
+
+  const RemoveItemToShoppingCart = () => {
+    const removeFromArr = shoppingCart.filter(arrDate !== date);
+    setShoppingCart(removeFromArr);
+  };
 
   // console.log(shoppingCart);
 
