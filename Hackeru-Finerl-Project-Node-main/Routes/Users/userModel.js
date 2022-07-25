@@ -26,9 +26,12 @@ const userSchema = new mongoose.Schema({
   },
   createdAt: { type: Date, default: Date.now },
   isAdmin: { type: Boolean, default: false },
+
+  favorite: {
+    type: Array,
+  },
 });
 
 const User = mongoose.model("User", userSchema);
-
 
 module.exports = User;

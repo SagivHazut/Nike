@@ -203,7 +203,7 @@ const AdminCards = (props) => {
         type="button"
         className="btn btn-outline-info btn-lg"
         data-mdb-ripple-color="dark"
-        onClick={() => history.push("/nike/cardregister")}
+        onClick={() => history.push("/admin/cardregister")}
       >
         Add a New Card
       </button>

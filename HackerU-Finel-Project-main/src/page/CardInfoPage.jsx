@@ -73,8 +73,8 @@ const CardInfoPage = (props) => {
                 <Item
                   original={cardArr.image1}
                   thumbnail={cardArr.image1}
-                  width="900"
-                  height="650"
+                  width="1024"
+                  height="768"
                 >
                   {({ ref, open }) => (
                     <img
@@ -88,8 +88,8 @@ const CardInfoPage = (props) => {
                 <Item
                   original={cardArr.image2}
                   thumbnail={cardArr.image2}
-                  width="900"
-                  height="650"
+                  width="1024"
+                  height="768"
                 >
                   {({ ref, open }) => (
                     <img
@@ -105,8 +105,8 @@ const CardInfoPage = (props) => {
                 <Item
                   original={cardArr.image3}
                   thumbnail={cardArr.image3}
-                  width="900"
-                  height="650"
+                  width="1024"
+                  height="768"
                 >
                   {({ ref, open }) => (
                     <img
@@ -120,8 +120,8 @@ const CardInfoPage = (props) => {
                 <Item
                   original={cardArr.image}
                   thumbnail={cardArr.image}
-                  width="900"
-                  height="650"
+                  width="1024"
+                  height="768"
                 >
                   {({ ref, open }) => (
                     <img
