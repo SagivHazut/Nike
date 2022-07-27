@@ -1,11 +1,11 @@
 import React from "react";
 import transactions from "./Admin/Transactions";
 import AuthGuardAdminRoute from "./Admin/AdminComponents/AuthGuardAdminRoute";
+import AdminAuthRegister from "./Admin/AdminComponents/AdminAuthRegister";
 import { ToastContainer } from "react-toastify";
 import AdminNavbar from "../src/Admin/AdminComponents/AdminNavbar";
 import Adminlogin from "./Admin/Adminlogin";
 import AdminSignupPage from "./Admin/AdminSignupPage";
-import AuthRegister from "./components/AuthRegister";
 import AdminCards from "./Admin/AdminCards";
 import { Redirect } from "react-router-dom";
 import WomenCardRegister from "./Admin/WomenCardRegister";
@@ -14,6 +14,7 @@ import AdminMen from "./Admin/AdminMen";
 import CardUpdate from "./Admin/CardUpdate";
 import CardRegister from "./Admin/CardsRegister";
 import WebUsers from "./Admin/WebUsers";
+
 const Admin = () => {
   return (
     <div>
@@ -25,10 +26,7 @@ const Admin = () => {
           path="/admin/transactions"
           component={transactions}
         />
-        <AuthGuardAdminRoute
-          path="/admin/WebUsers"
-          component={WebUsers}
-        />
+        <AuthGuardAdminRoute path="/admin/WebUsers" component={WebUsers} />
         <AuthGuardAdminRoute path="/admin/adminCards" component={AdminCards} />
         <Redirect to="/admin/transactions" />
         <AuthGuardAdminRoute
@@ -42,8 +40,8 @@ const Admin = () => {
         />
         <AuthGuardAdminRoute path="/admin/AdminMen" component={AdminMen} />
         <AuthGuardAdminRoute path="/admin/AdminWomen" component={AdminWomen} />
-        <AuthRegister path="/admin/signup" component={AdminSignupPage} />
-        <AuthRegister path="/admin/login" component={Adminlogin} />
+        <AdminAuthRegister path="/admin/signup" component={AdminSignupPage} />
+        <AdminAuthRegister path="/admin/login" component={Adminlogin} />
       </div>
     </div>
   );

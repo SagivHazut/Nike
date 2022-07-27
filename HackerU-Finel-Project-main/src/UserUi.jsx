@@ -23,6 +23,8 @@ import Basket from "./page/Basket";
 import RestPassword from "./page/RestPass";
 import ChangePass from "./page/ChangePass";
 import Checkout from "./page/CheckOutPage";
+// import axios from "axios";
+import Favorite from "./page/Favorite";
 
 const SignupPage = React.lazy(() => import("./page/SignupPage"));
 
@@ -51,6 +53,8 @@ function Userui() {
   //   setShoppingCart(remove);
   //   console.log(remove);
   // };
+
+ 
 
   const clearShoppingCart = () => {
     history.push("/nike/checkout");
@@ -92,6 +96,38 @@ function Userui() {
               ""
             ) : (
               <ShoppingCartBox
+                clearShoppingCart={clearShoppingCart}
+                ShoppingCart={shoppingCart}
+                handleBuyButtonClick={addItemToShoppingCart}
+                handleRemoveButtonClick={RemoveItemToShoppingCart}
+              />
+            )}
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            py: 1,
+            m: 3,
+            position: "sticky",
+            top: 0,
+            zIndex: 3,
+          }}
+        >
+          <Box
+            sx={{
+              ml: "auto",
+              bgcolor: "white",
+              borderRadius: 1,
+              borderColor: "primary.main",
+            }}
+          >
+            {shoppingCart.length === 0 ||
+            location.pathname === "/nike/checkout" ? (
+              ""
+            ) : (
+              <Favorite
                 clearShoppingCart={clearShoppingCart}
                 ShoppingCart={shoppingCart}
                 handleBuyButtonClick={addItemToShoppingCart}

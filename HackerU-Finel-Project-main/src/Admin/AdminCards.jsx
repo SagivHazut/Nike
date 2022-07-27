@@ -10,7 +10,7 @@ import { Carousel } from "react-responsive-carousel";
 const AdminCards = (props) => {
   const history = useHistory();
 
-  const URL = "http://localhost:8181/api/cards/"
+  const URL = "http://localhost:8181/api/cards/";
   const [cardsArr, setCardsArr] = useState([]);
   const IsloggedInRedux = useSelector((state) => state.auth.loggedIn);
   const [userArr] = useState([]);

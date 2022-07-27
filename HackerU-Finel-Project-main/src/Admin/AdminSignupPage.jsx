@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 
 const AdminSignupPage = () => {
   const history = useHistory();
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,7 +29,7 @@ const AdminSignupPage = () => {
     axios
       .post("/users/register", { name, email, password, biz })
       .then((res) => {
-        history.push("/nike/login", { email, password });
+        history.push("/admin/login", { email, password });
       })
       .catch((err) => {
         toast.error(err.response.data);

@@ -65,13 +65,39 @@ router.post("/login", async (req, res) => {
     token: generateAuthToken(user),
   });
 });
+// לגשת אל המשתמש
+//לגשת id של המשתמש
+//
+
+router.post("/favorite/:id", async (req, res) => {
+  try {
+    let card = req.body;
+    cardArr = { favorite: card };
+    console.log(cardArr);
+    const filter = {
+      _id: req.params.id,
+    };
+    card = await User.findOneAndUpdate(filter, cardArr);
+    if (!card) {
+      console.log("No card with this ID in the database!");
+      return res.status(404).send("No card with this ID in the database!");
+    }
+
+    card = new User(card);
+    await card.save();
+    return res.send(card);
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).send(error.message);
+  }
+});
 
 router.get("/userInfo", auth, (req, res) => {
   let user = req.user;
   // if (user.biz) return res.status(403).json("Un authorize user!"); // מראה בדיקה אם המשתמש הוא עסקי
 
   User.findById(user._id)
-    .select(["-password", "-createdAt", "-__v"])
+    .select(["-password", "-createdAt", "-__v", "_id"])
     .then((user) => res.json(user))
     .catch((errorsFromMongoose) => res.status(500).json(errorsFromMongoose));
 });

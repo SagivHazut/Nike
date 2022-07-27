@@ -10,8 +10,24 @@ import { useHistory } from "react-router-dom";
 
 const CardsPanelPage = (props) => {
   const [cardsArr, setCardsArr] = useState([]);
-  const { handleBuyButtonClick, handleRemoveButtonClick } = props;
+  const { handleBuyButtonClick } = props;
   const history = useHistory();
+  const [favorite, setFavorite] = useState([]);
+  const [id] = useState("");
+  const URL = "http://localhost:8181/api/users/favorite/";
+  const [userInfo, setUserInfo] = useState([]);
+
+  let IdInfo = userInfo._id;
+
+  useEffect(() => {
+    axios
+      .get(`/users/userInfo/`)
+      .then(({ data }) => {
+        setUserInfo(data);
+      })
+
+      .catch((err) => {});
+  }, []);
 
   const ItemPage = (id) => {
     cardsArr.filter((item) => item._id !== id);
@@ -41,6 +57,19 @@ const CardsPanelPage = (props) => {
       .sort((a, b) => parsePrice(a.phone) - parsePrice(b.phone));
     setCardsArr(sortedStudios);
   }
+
+  // const handleFavoriteChanges = (ev) => {
+  //   setFavorite(ev.target.value);
+  // };
+
+  const addingFavorite = () => {
+    axios.post(`${URL}${IdInfo}`).then((res) => {
+      const newFavorite = cardsArr.filter((item) => item._id !== id);
+      console.log(newFavorite);
+
+      setCardsArr(newFavorite);
+    });
+  };
 
   return (
     <div>
@@ -172,9 +201,9 @@ const CardsPanelPage = (props) => {
                   <IconButton
                     color="secondary"
                     aria-label="Add to Cart"
-                    onClick={() => {
-                      handleRemoveButtonClick(item);
-                    }}
+                    // value={favorite}
+                    // onChange={handleFavoriteChanges}
+                    onClick={() => addingFavorite(item._id)}
                   >
                     <RemoveShoppingCart />
                   </IconButton>

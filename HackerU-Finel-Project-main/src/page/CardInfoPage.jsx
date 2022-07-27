@@ -80,6 +80,7 @@ const CardInfoPage = (props) => {
                     <img
                       ref={ref}
                       onClick={open}
+                      alt=""
                       src={cardArr.image1}
                       style={{ margin: "1%", width: "98%", cursor: "zoom-in" }}
                     />
@@ -94,6 +95,7 @@ const CardInfoPage = (props) => {
                   {({ ref, open }) => (
                     <img
                       ref={ref}
+                      alt=""
                       onClick={open}
                       src={cardArr.image2}
                       style={{ margin: "1%", width: "98%", cursor: "zoom-in" }}
@@ -111,6 +113,7 @@ const CardInfoPage = (props) => {
                   {({ ref, open }) => (
                     <img
                       ref={ref}
+                      alt=""
                       onClick={open}
                       src={cardArr.image3}
                       style={{ margin: "1%", width: "98%", cursor: "zoom-in" }}
@@ -126,6 +129,7 @@ const CardInfoPage = (props) => {
                   {({ ref, open }) => (
                     <img
                       ref={ref}
+                      alt=""
                       onClick={open}
                       src={cardArr.image}
                       style={{ margin: "1%", width: "98%", cursor: "zoom-in" }}

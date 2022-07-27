@@ -6,10 +6,10 @@ import { toast } from "react-toastify";
 
 const SignupPage = () => {
   const history = useHistory();
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [biz] = useState(false);
 
   const handleNameChange = (ev) => {
     setName(ev.target.value);
@@ -24,7 +24,7 @@ const SignupPage = () => {
   const handleSignup = (ev) => {
     ev.preventDefault();
     axios
-      .post("/users/register", { name, email, password })
+      .post("/users/register", { name, email, password, biz })
       .then((res) => {
         history.push("/nike/login", { email, password });
       })
