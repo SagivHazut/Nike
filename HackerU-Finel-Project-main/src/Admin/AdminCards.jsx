@@ -26,11 +26,9 @@ const AdminCards = (props) => {
   }, []);
 
   const handleEditUser = (id) => {
-    let newUser = userArr.find((item) => {
-      return item._id !== id;
-    });
-
-    setSelectedUser({ ...newUser });
+    let newUser = cardsArr.filter((item) => item._id === id);
+    setSelectedUser(newUser);
+    console.log(newUser);
   };
 
   const handleUpdateUser = (id) => {

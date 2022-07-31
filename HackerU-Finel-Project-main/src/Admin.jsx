@@ -7,7 +7,7 @@ import AdminNavbar from "../src/Admin/AdminComponents/AdminNavbar";
 import Adminlogin from "./Admin/Adminlogin";
 import AdminSignupPage from "./Admin/AdminSignupPage";
 import AdminCards from "./Admin/AdminCards";
-import { Redirect } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import WomenCardRegister from "./Admin/WomenCardRegister";
 import AdminWomen from "./Admin/AdminWomen";
 import AdminMen from "./Admin/AdminMen";
@@ -22,6 +22,8 @@ const Admin = () => {
 
       <div>
         <ToastContainer />
+        <Route path="/admin/signup" component={AdminSignupPage} />
+        <Route path="/admin/login" component={Adminlogin} />
         <AuthGuardAdminRoute
           path="/admin/transactions"
           component={transactions}
@@ -40,8 +42,6 @@ const Admin = () => {
         />
         <AuthGuardAdminRoute path="/admin/AdminMen" component={AdminMen} />
         <AuthGuardAdminRoute path="/admin/AdminWomen" component={AdminWomen} />
-        <AdminAuthRegister path="/admin/signup" component={AdminSignupPage} />
-        <AdminAuthRegister path="/admin/login" component={Adminlogin} />
       </div>
     </div>
   );

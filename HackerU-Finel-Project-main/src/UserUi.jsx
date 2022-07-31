@@ -54,8 +54,6 @@ function Userui() {
   //   console.log(remove);
   // };
 
- 
-
   const clearShoppingCart = () => {
     history.push("/nike/checkout");
   };
@@ -104,7 +102,7 @@ function Userui() {
             )}
           </Box>
         </Box>
-        <Box
+        {/* <Box
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -135,7 +133,7 @@ function Userui() {
               />
             )}
           </Box>
-        </Box>
+        </Box> */}
 
         <ToastContainer />
         <Suspense fallback={<div>loading</div>}>
