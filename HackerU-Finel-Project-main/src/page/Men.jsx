@@ -1,6 +1,6 @@
 import { useState, useEffect, Fragment } from "react";
 import axios from "axios";
-import NikeStore  from "./NikeStore";
+import NikeStore from "./NikeStore";
 import { CardActions, IconButton } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -98,7 +98,6 @@ const MenStore = (props) => {
                       ItemPage(item._id);
                     }}
                     style={{ cursor: "-webkit-grab" }}
-
                   >
                     <img
                       style={{ textAlign: "center" }}
@@ -113,7 +112,6 @@ const MenStore = (props) => {
                       ItemPage(item._id);
                     }}
                     style={{ cursor: "-webkit-grab" }}
-
                   >
                     <img
                       style={{ textAlign: "center" }}
@@ -128,7 +126,6 @@ const MenStore = (props) => {
                       ItemPage(item._id);
                     }}
                     style={{ cursor: "-webkit-grab" }}
-
                   >
                     <img
                       style={{ textAlign: "center" }}
@@ -143,7 +140,6 @@ const MenStore = (props) => {
                       ItemPage(item._id);
                     }}
                     style={{ cursor: "-webkit-grab" }}
-
                   >
                     <img
                       style={{ textAlign: "center" }}
@@ -180,7 +176,7 @@ const MenStore = (props) => {
                     color="secondary"
                     aria-label="Add to Cart"
                     onClick={() => {
-                      handleRemoveButtonClick(item);
+                      handleRemoveButtonClick();
                     }}
                   >
                     <RemoveShoppingCart />

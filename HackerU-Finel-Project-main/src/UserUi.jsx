@@ -23,8 +23,6 @@ import Basket from "./page/Basket";
 import RestPassword from "./page/RestPass";
 import ChangePass from "./page/ChangePass";
 import Checkout from "./page/CheckOutPage";
-// import axios from "axios";
-import Favorite from "./page/Favorite";
 
 const SignupPage = React.lazy(() => import("./page/SignupPage"));
 
@@ -39,20 +37,23 @@ function Userui() {
     currentShoppingCart.push({ item, date });
     setShoppingCart(currentShoppingCart);
   };
-  const arrDate = shoppingCart.map((item) => item.date);
-
-  const RemoveItemToShoppingCart = () => {
-    const removeFromArr = shoppingCart.filter(arrDate !== date);
-    setShoppingCart(removeFromArr);
-  };
+  // const arrDate = shoppingCart.map((item) => item.date);
+  // const arrDate2 = shoppingCart.map(() => date);
+  // console.log(arrDate);
+  // console.log(arrDate2);
+  // const RemoveItemToShoppingCart = (id) => {
+  //   const removeFromArr = shoppingCart.filter((item) => item._id === id);
+  //   setShoppingCart(removeFromArr);
+  //   console.log(removeFromArr);
+  // };
 
   // console.log(shoppingCart);
 
-  // const RemoveItemToShoppingCart = (index) => {
-  //   const remove = shoppingCart.slice(1, index);
-  //   setShoppingCart(remove);
-  //   console.log(remove);
-  // };
+  const RemoveItemToShoppingCart = (index) => {
+    const remove = shoppingCart.slice(1, index);
+    setShoppingCart(remove);
+    console.log(remove);
+  };
 
   const clearShoppingCart = () => {
     history.push("/nike/checkout");
@@ -102,38 +103,6 @@ function Userui() {
             )}
           </Box>
         </Box>
-        {/* <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            py: 1,
-            m: 3,
-            position: "sticky",
-            top: 0,
-            zIndex: 3,
-          }}
-        >
-          <Box
-            sx={{
-              ml: "auto",
-              bgcolor: "white",
-              borderRadius: 1,
-              borderColor: "primary.main",
-            }}
-          >
-            {shoppingCart.length === 0 ||
-            location.pathname === "/nike/checkout" ? (
-              ""
-            ) : (
-              <Favorite
-                clearShoppingCart={clearShoppingCart}
-                ShoppingCart={shoppingCart}
-                handleBuyButtonClick={addItemToShoppingCart}
-                handleRemoveButtonClick={RemoveItemToShoppingCart}
-              />
-            )}
-          </Box>
-        </Box> */}
 
         <ToastContainer />
         <Suspense fallback={<div>loading</div>}>

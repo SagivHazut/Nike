@@ -10,24 +10,24 @@ import { useHistory } from "react-router-dom";
 
 const CardsPanelPage = (props) => {
   const [cardsArr, setCardsArr] = useState([]);
-  const { handleBuyButtonClick } = props;
+  const { handleBuyButtonClick, handleRemoveButtonClick } = props;
   const history = useHistory();
-  const [favorite, setFavorite] = useState([]);
-  const [id] = useState("");
-  const URL = "http://localhost:8181/api/users/favorite/";
-  const [userInfo, setUserInfo] = useState([]);
+  // const [favorite, setFavorite] = useState([]);
+  // const [id] = useState("");
+  // const URL = "http://localhost:8181/api/users/favorite/";
+  // const [userInfo, setUserInfo] = useState([]);
 
-  let IdInfo = userInfo._id;
+  // let IdInfo = userInfo._id;
 
-  useEffect(() => {
-    axios
-      .get(`/users/userInfo/`)
-      .then(({ data }) => {
-        setUserInfo(data);
-      })
+  // useEffect(() => {
+  //   axios
+  //     .get(`/users/userInfo/`)
+  //     .then(({ data }) => {
+  //       setUserInfo(data);
+  //     })
 
-      .catch((err) => {});
-  }, []);
+  //     .catch((err) => {});
+  // }, []);
 
   const ItemPage = (id) => {
     cardsArr.filter((item) => item._id !== id);
@@ -62,14 +62,14 @@ const CardsPanelPage = (props) => {
   //   setFavorite(ev.target.value);
   // };
 
-  const addingFavorite = () => {
-    axios.post(`${URL}${IdInfo}`).then((res) => {
-      const newFavorite = cardsArr.filter((item) => item._id !== id);
-      console.log(newFavorite);
+  // const addingFavorite = () => {
+  //   axios.post(`${URL}${IdInfo}`).then((res) => {
+  //     const newFavorite = cardsArr.filter((item) => item._id !== id);
+  //     console.log(newFavorite);
 
-      setCardsArr(newFavorite);
-    });
-  };
+  //     setCardsArr(newFavorite);
+  //   });
+  // };
 
   return (
     <div>
@@ -203,7 +203,7 @@ const CardsPanelPage = (props) => {
                     aria-label="Add to Cart"
                     // value={favorite}
                     // onChange={handleFavoriteChanges}
-                    onClick={() => addingFavorite(item._id)}
+                    onClick={() => handleRemoveButtonClick()}
                   >
                     <RemoveShoppingCart />
                   </IconButton>

@@ -177,7 +177,7 @@ const WomenStore = (props) => {
                     color="secondary"
                     aria-label="Add to Cart"
                     onClick={() => {
-                      handleRemoveButtonClick(item);
+                      handleRemoveButtonClick();
                     }}
                   >
                     <RemoveShoppingCart />

@@ -18,8 +18,7 @@ import { RemoveShoppingCart } from "@material-ui/icons";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 export const ShoppingCartBox = (props) => {
-  const { ShoppingCart, clearShoppingCart, handleRemoveButtonClick, date } =
-    props;
+  const { ShoppingCart, clearShoppingCart, handleRemoveButtonClick } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const itemsPrice = ShoppingCart.reduce((a, c) => a + 1 * c.item.phone, 0);
@@ -99,7 +98,7 @@ export const ShoppingCartBox = (props) => {
                         color="default"
                         aria-label="Add to Cart"
                         onClick={() => {
-                          handleRemoveButtonClick(date);
+                          handleRemoveButtonClick();
                         }}
                       >
                         <RemoveShoppingCart />
