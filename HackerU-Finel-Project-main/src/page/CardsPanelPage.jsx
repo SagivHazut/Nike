@@ -5,14 +5,18 @@ import { CardActions, IconButton } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import { RemoveShoppingCart } from "@material-ui/icons";
+// import { RemoveShoppingCart } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
+import Favorite from "./Favorite";
 
 const CardsPanelPage = (props) => {
   const [cardsArr, setCardsArr] = useState([]);
-  const { handleBuyButtonClick, handleRemoveButtonClick } = props;
+  const { handleBuyButtonClick } = props;
   const history = useHistory();
+
+  // const favoriteId = props.match.params._id;
   // const [favorite, setFavorite] = useState([]);
+
   // const [id] = useState("");
   // const URL = "http://localhost:8181/api/users/favorite/";
   // const [userInfo, setUserInfo] = useState([]);
@@ -57,19 +61,6 @@ const CardsPanelPage = (props) => {
       .sort((a, b) => parsePrice(a.phone) - parsePrice(b.phone));
     setCardsArr(sortedStudios);
   }
-
-  // const handleFavoriteChanges = (ev) => {
-  //   setFavorite(ev.target.value);
-  // };
-
-  // const addingFavorite = () => {
-  //   axios.post(`${URL}${IdInfo}`).then((res) => {
-  //     const newFavorite = cardsArr.filter((item) => item._id !== id);
-  //     console.log(newFavorite);
-
-  //     setCardsArr(newFavorite);
-  //   });
-  // };
 
   return (
     <div>
@@ -198,7 +189,12 @@ const CardsPanelPage = (props) => {
                   }}
                   color="secondary"
                 >
-                  <IconButton
+                  <Favorite
+                    userID={localStorage.getItem("tokenKey")}
+                    _id={item._id}
+                    favoriteInfo={cardsArr}
+                  />
+                  {/* <IconButton
                     color="secondary"
                     aria-label="Add to Cart"
                     // value={favorite}
@@ -206,7 +202,7 @@ const CardsPanelPage = (props) => {
                     onClick={() => handleRemoveButtonClick()}
                   >
                     <RemoveShoppingCart />
-                  </IconButton>
+                  </IconButton> */}
                   <IconButton
                     to="/nike/cart"
                     aria-label="Show cart items"
