@@ -1,48 +1,129 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import {
+  Badge,
+  Button,
+  Paper,
+  Popover,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  CardActions,
+  IconButton,
+} from "@mui/material";
+import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { AddShoppingCart } from "@material-ui/icons";
 
 export const Favorite = (props) => {
-  const [FavoriteNumber, setFavoriteNumber] = useState(0);
-  const [Favorited, setFavorited] = useState(false);
+  const { FavoriteCart, handleRemoveButtonClick, handleBuyButtonClick } = props;
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
-  useEffect(() => {
-    const variable = {
-      _id: props.favoriteInfo._id,
-      name: props.favoriteInfo.name,
-      description: props.favoriteInfo.description,
-      phone: props.favoriteInfo.phone,
-      image1: props.favoriteInfo.image1,
-      image2: props.favoriteInfo.image2,
-      image3: props.favoriteInfo.image3,
-      userID: props.userID,
-      bizNumber: props.favoriteInfo.bizNumber,
-      MenCollation: props.favoriteInfo.MenCollation,
-      WomenCollation: props.favoriteInfo.WomenCollation,
-    };
-    axios.post("/favorite/favoriteNumber", variable).then((response) => {
-      if (response.data.success) {
-        setFavoriteNumber(response.data.favoriteNumber);
-      } else {
-        alert("Falied to get favorite number");
-      }
-    });
-    axios.post("/favorite/favorited", variable).then((response) => {
-      if (response.data.success) {
-        setFavorited(response.data.favorited);
-      } else {
-        alert("Falied to get favorite info");
-      }
-    });
-  }, []);
+  const handleClick = (event) => {
+    if (FavoriteCart.length !== 0) {
+      setAnchorEl(event.currentTarget);
+    }
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
-    <div>
-      <button>
-        {Favorited ? "remove from favorotie" : "Add to favorites"}
-        {FavoriteNumber}
-      </button>
-    </div>
+    <>
+      <Button
+        style={{
+          borderRadius: "33%",
+          width: "5vw",
+          height: "5vh",
+        }}
+        variant="contained"
+        endIcon={
+          <Badge badgeContent={FavoriteCart.length} color="primary">
+            <FavoriteBorderIcon color="action" style={{ marginLeft: "-20%" }} />
+          </Badge>
+        }
+        onClick={handleClick}
+        sx={{ bgcolor: "gray.400" }}
+      ></Button>
+      <Popover
+        id="shoppingCart"
+        open={Boolean(anchorEl)}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+      >
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 450 }} size="small" aria-label="a dense table">
+            <TableBody>
+              {FavoriteCart.map((props, index, item) => (
+                <TableRow
+                  key={index}
+                  sx={{
+                    "&:last-child td, &:last-child th": {
+                      border: 0,
+                    },
+                  }}
+                >
+                  <TableCell component="th" scope="row">
+                    <img
+                      style={{
+                        textAlign: "center",
+                        width: "5vw",
+                      }}
+                      src={props.item.image}
+                      alt="..."
+                    />
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {props.item.name}
+                  </TableCell>
+                  <TableCell align="right">${props.item.phone}</TableCell>
+                  <TableCell>
+                    <CardActions
+                      disableSpacing
+                      style={{
+                        justifyContent: "space-between",
+                        margin: "0 auto",
+                        width: "50%",
+                        display: "flex",
+                      }}
+                      color="secondary"
+                    >
+                      <IconButton
+                        color="default"
+                        aria-label="Add to Cart"
+                        onClick={() => {
+                          handleRemoveButtonClick(item);
+                        }}
+                      >
+                        <ThumbDownOffAltIcon />
+                      </IconButton>
+                      <IconButton
+                        to="/nike/cart"
+                        aria-label="Show cart items"
+                        color="secondary"
+                        className="cart"
+                        onClick={() => {
+                          handleBuyButtonClick(props.item);
+                        }}
+                      >
+                        <AddShoppingCart />
+                      </IconButton>
+                    </CardActions>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Popover>
+    </>
   );
 };
-//https://www.youtube.com/watch?v=BCTsHJFep8s
+
 export default Favorite;

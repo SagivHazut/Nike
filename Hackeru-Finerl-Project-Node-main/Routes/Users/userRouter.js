@@ -65,9 +65,7 @@ router.post("/login", async (req, res) => {
     token: generateAuthToken(user),
   });
 });
-// לגשת אל המשתמש
-//לגשת id של המשתמש
-//
+
 
 router.post("/favorite/:id", async (req, res) => {
   try {

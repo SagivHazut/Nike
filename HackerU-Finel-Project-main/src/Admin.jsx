@@ -1,7 +1,6 @@
 import React from "react";
 import transactions from "./Admin/Transactions";
 import AuthGuardAdminRoute from "./Admin/AdminComponents/AuthGuardAdminRoute";
-import AdminAuthRegister from "./Admin/AdminComponents/AdminAuthRegister";
 import { ToastContainer } from "react-toastify";
 import AdminNavbar from "../src/Admin/AdminComponents/AdminNavbar";
 import Adminlogin from "./Admin/Adminlogin";

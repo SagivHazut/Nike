@@ -5,33 +5,13 @@ import { CardActions, IconButton } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-// import { RemoveShoppingCart } from "@material-ui/icons";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useHistory } from "react-router-dom";
-import Favorite from "./Favorite";
 
 const CardsPanelPage = (props) => {
   const [cardsArr, setCardsArr] = useState([]);
-  const { handleBuyButtonClick } = props;
+  const { handleBuyButtonClick, handleFavoriteButtonClick } = props;
   const history = useHistory();
-
-  // const favoriteId = props.match.params._id;
-  // const [favorite, setFavorite] = useState([]);
-
-  // const [id] = useState("");
-  // const URL = "http://localhost:8181/api/users/favorite/";
-  // const [userInfo, setUserInfo] = useState([]);
-
-  // let IdInfo = userInfo._id;
-
-  // useEffect(() => {
-  //   axios
-  //     .get(`/users/userInfo/`)
-  //     .then(({ data }) => {
-  //       setUserInfo(data);
-  //     })
-
-  //     .catch((err) => {});
-  // }, []);
 
   const ItemPage = (id) => {
     cardsArr.filter((item) => item._id !== id);
@@ -189,20 +169,13 @@ const CardsPanelPage = (props) => {
                   }}
                   color="secondary"
                 >
-                  <Favorite
-                    userID={localStorage.getItem("tokenKey")}
-                    _id={item._id}
-                    favoriteInfo={cardsArr}
-                  />
-                  {/* <IconButton
+                  <IconButton
                     color="secondary"
                     aria-label="Add to Cart"
-                    // value={favorite}
-                    // onChange={handleFavoriteChanges}
-                    onClick={() => handleRemoveButtonClick()}
+                    onClick={() => handleFavoriteButtonClick(item)}
                   >
-                    <RemoveShoppingCart />
-                  </IconButton> */}
+                    <ThumbUpOffAltIcon />
+                  </IconButton>
                   <IconButton
                     to="/nike/cart"
                     aria-label="Show cart items"

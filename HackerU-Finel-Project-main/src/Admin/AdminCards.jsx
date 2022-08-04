@@ -13,7 +13,6 @@ const AdminCards = (props) => {
   const URL = "http://localhost:8181/api/cards/";
   const [cardsArr, setCardsArr] = useState([]);
   const IsloggedInRedux = useSelector((state) => state.auth.loggedIn);
-  const [userArr] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {

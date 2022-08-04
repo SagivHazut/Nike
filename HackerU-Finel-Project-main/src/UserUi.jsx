@@ -23,11 +23,13 @@ import Basket from "./page/Basket";
 import RestPassword from "./page/RestPass";
 import ChangePass from "./page/ChangePass";
 import Checkout from "./page/CheckOutPage";
+import Favorite from "./page/Favorite";
 
 const SignupPage = React.lazy(() => import("./page/SignupPage"));
 
 function Userui() {
   const [shoppingCart, setShoppingCart] = useState([]);
+  const [favoriteCart, setFavoriteCart] = useState([]);
   const location = useLocation();
   const history = useHistory();
   const date = new Date();
@@ -37,6 +39,13 @@ function Userui() {
     currentShoppingCart.push({ item, date });
     setShoppingCart(currentShoppingCart);
   };
+
+  const addItemToFavoriteCart = (item) => {
+    const currentFavoriteCart = [...favoriteCart];
+    currentFavoriteCart.push({ item });
+    setFavoriteCart(currentFavoriteCart);
+  };
+
   // const arrDate = shoppingCart.map((item) => item.date);
   // const arrDate2 = shoppingCart.map(() => date);
   // console.log(arrDate);
@@ -58,6 +67,9 @@ function Userui() {
   const clearShoppingCart = () => {
     history.push("/nike/checkout");
   };
+  const saveToUser = () => {
+    history.push("/nike/checkout");
+  };
 
   useEffect(() => {
     window.localStorage.setItem("product", JSON.stringify(shoppingCart));
@@ -67,6 +79,16 @@ function Userui() {
     const product = window.localStorage.getItem("product");
     setShoppingCart(JSON.parse(product));
   }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("favorite", JSON.stringify(favoriteCart));
+  }, [favoriteCart]);
+
+  useEffect(() => {
+    const favorite = window.localStorage.getItem("favorite");
+    setFavoriteCart(JSON.parse(favorite));
+  }, []);
+
   return (
     <div>
       <div>
@@ -102,6 +124,25 @@ function Userui() {
               />
             )}
           </Box>
+          <Box
+            sx={{
+              mr: "auto",
+              bgcolor: "white",
+              borderColor: "primary.main",
+            }}
+          >
+            {favoriteCart.length === 0 ||
+            location.pathname === "/nike/checkout" ? (
+              ""
+            ) : (
+              <Favorite
+                saveToUser={saveToUser}
+                FavoriteCart={favoriteCart}
+                handleFavoriteButtonClick={addItemToFavoriteCart}
+                handleBuyButtonClick={addItemToShoppingCart}
+              />
+            )}
+          </Box>
         </Box>
 
         <ToastContainer />
@@ -126,25 +167,25 @@ function Userui() {
             <Route exact path="/nike/women">
               <WomenStore
                 handleBuyButtonClick={addItemToShoppingCart}
-                handleRemoveButtonClick={RemoveItemToShoppingCart}
+                handleFavoriteButtonClick={addItemToFavoriteCart}
               />
             </Route>
             <Route exact path="/nike/men">
               <MenStore
                 handleBuyButtonClick={addItemToShoppingCart}
-                handleRemoveButtonClick={RemoveItemToShoppingCart}
+                handleFavoriteButtonClick={addItemToFavoriteCart}
               />
             </Route>
             <Route exact path="/nike/CardsPanelPage">
               <CardsPanelPage
                 handleBuyButtonClick={addItemToShoppingCart}
-                handleRemoveButtonClick={RemoveItemToShoppingCart}
+                handleFavoriteButtonClick={addItemToFavoriteCart}
               />
             </Route>
             <Route path="/nike/card/:id">
               <CardInfoPage
                 handleBuyButtonClick={addItemToShoppingCart}
-                handleRemoveButtonClick={RemoveItemToShoppingCart}
+                handleFavoriteButtonClick={addItemToFavoriteCart}
               />
             </Route>
             <Route path="/nike/aboutpage" component={AboutPage} />

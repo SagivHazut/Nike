@@ -5,12 +5,12 @@ import { CardActions, IconButton } from "@material-ui/core";
 import { AddShoppingCart } from "@material-ui/icons";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import { RemoveShoppingCart } from "@material-ui/icons";
+import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import { useHistory } from "react-router-dom";
 
 const MenStore = (props) => {
   const [cardsArr, setCardsArr] = useState([]);
-  const { handleBuyButtonClick, handleRemoveButtonClick } = props;
+  const { handleBuyButtonClick, handleFavoriteButtonClick } = props;
   const history = useHistory();
 
   const ItemPage = (id) => {
@@ -175,11 +175,9 @@ const MenStore = (props) => {
                   <IconButton
                     color="secondary"
                     aria-label="Add to Cart"
-                    onClick={() => {
-                      handleRemoveButtonClick();
-                    }}
+                    onClick={() => handleFavoriteButtonClick(item)}
                   >
-                    <RemoveShoppingCart />
+                    <ThumbUpOffAltIcon />
                   </IconButton>
                   <IconButton
                     to="/nike/cart"
