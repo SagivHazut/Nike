@@ -82,7 +82,7 @@ export const Favorite = (props) => {
                   <TableCell component="th" scope="row">
                     {props.item.name}
                   </TableCell>
-                  <TableCell align="right">${props.item.phone}</TableCell>
+                  <TableCell align="right">${props.item.price}</TableCell>
                   <TableCell>
                     <CardActions
                       disableSpacing
@@ -98,7 +98,7 @@ export const Favorite = (props) => {
                         color="default"
                         aria-label="Add to Cart"
                         onClick={() => {
-                          handleRemoveButtonClick(item);
+                          handleRemoveButtonClick(item.date);
                         }}
                       >
                         <ThumbDownOffAltIcon />

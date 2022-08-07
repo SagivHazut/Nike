@@ -2,13 +2,34 @@ import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import { Checkbox } from "./CheckBox";
 const CardRegister = () => {
-  const history = useHistory();
+  const Sizes = [
+    { name: "38", checked: false },
+    { name: "39", checked: false },
+    { name: "40", checked: false },
+    { name: "41", checked: false },
+    { name: "42", checked: false },
+    { name: "43", checked: false },
+    { name: "44", checked: false },
+    { name: "45", checked: false },
+    { name: "46", checked: false },
+  ];
+  const [size, setSize] = useState(Sizes);
+  const updateCheckStatus = (index) => {
+    setSize(
+      size.map((topping, currentIndex) =>
+        currentIndex === index
+          ? { ...topping, checked: !topping.checked }
+          : topping
+      )
+    );
+  };
 
+  const history = useHistory();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [phone, setPhone] = useState("");
+  const [price, setprice] = useState("");
   const [image, setImage] = useState();
   const [image1, setImage1] = useState();
   const [image2, setImage2] = useState();
@@ -18,11 +39,16 @@ const CardRegister = () => {
   const handleNameChange = (ev) => {
     setName(ev.target.value);
   };
+  const handleSizeChange = (ev) => {
+    setSize(ev.target.value);
+  };
+  console.log(size);
+
   const handleDescriptionChange = (ev) => {
     setDescription(ev.target.value);
   };
-  const handlePhoneChange = (ev) => {
-    setPhone(ev.target.value);
+  const handlepriceChange = (ev) => {
+    setprice(ev.target.value);
   };
   const handleImageChange = (ev) => {
     setImage(ev.target.value);
@@ -46,17 +72,18 @@ const CardRegister = () => {
       .post("/cards/women", {
         name,
         description,
-        phone,
+        price,
         image,
         image1,
         image2,
         image3,
+        size,
         WomenCollation,
       })
       .then((res) => {
         history.push("/admin/AdminWomen", {
           description,
-          phone,
+          price,
           WomenCollation,
         });
       })
@@ -104,16 +131,16 @@ const CardRegister = () => {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="exampleInputPhone1" className="form-label">
+            <label htmlFor="exampleInputprice1" className="form-label">
               Price
             </label>{" "}
             <br />
             <input
               type="text"
               className="form-control"
-              id="exampleInputPhone1"
-              onChange={handlePhoneChange}
-              value={phone}
+              id="exampleInputprice1"
+              onChange={handlepriceChange}
+              value={price}
               required
             />
           </div>
@@ -172,6 +199,23 @@ const CardRegister = () => {
               value={image3}
               required
             />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="exampleInputImage1" className="form-label">
+              Size
+            </label>
+            <br />
+            <div className="App">
+              {size.map((size, index) => (
+                <Checkbox
+                  key={size.name}
+                  isChecked={size.checked}
+                  checkHandler={() => updateCheckStatus(index)}
+                  label={size.name}
+                  index={index}
+                />
+              ))}
+            </div>
           </div>
           <div className="mb-3" style={{ display: "none" }}>
             <label htmlFor="exampleInputWomenCollation" className="form-label">

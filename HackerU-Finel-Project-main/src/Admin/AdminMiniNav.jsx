@@ -29,7 +29,7 @@ export const AdminMiniNav = (props) => {
   let dataSearch = cardsArr.filter((item) => {
     return (
       (item.name.toLowerCase() + item.description.toLowerCase())
-        // + item.phone
+        // + item.price
         .includes(filter.toLowerCase() || Number(filter))
     );
   });
@@ -109,7 +109,7 @@ export const AdminMiniNav = (props) => {
                       <CardUpdate
                         name={item.name}
                         description={item.description}
-                        phone={item.phone}
+                        price={item.price}
                         image={item.image}
                         id={item._id}
                         onUpdateUser={handleUpdateUser}
@@ -120,7 +120,7 @@ export const AdminMiniNav = (props) => {
                   </div>
                   <h5 className="card-title">{item.name}</h5>
                   <p className="card-text">{item.description}</p>
-                  <p className="card-text">${item.phone}</p>
+                  <p className="card-text">${item.price}</p>
                   <div
                     style={{
                       justifyContent: "space-between",

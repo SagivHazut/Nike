@@ -3,14 +3,16 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import { useHistory } from "react-router-dom";
 
 const NikeStore = () => {
-  const [filter, setFilter] = useState("");
   const [cardsArr, setCardsArr] = useState([]);
-
-  const searchText = (event) => {
-    setFilter(event.target.value);
-  };
+  let autoFill = cardsArr.map((item) => {
+    return item.name;
+  });
+  const [inputValue, setInputValue] = React.useState("");
+  const [filter, setFilter] = React.useState(autoFill[0]);
+  const history = useHistory();
 
   useEffect(() => {
     axios
@@ -22,16 +24,12 @@ const NikeStore = () => {
   }, []);
 
   let dataSearch = cardsArr.filter((item) => {
-    return (
-      (item.name.toLowerCase() + item.description.toLowerCase())
-        // + item.phone
-        .includes(filter.toLowerCase() || Number(filter))
-    );
+    return (item.name + item.description).includes(filter || Number(filter));
   });
-  let autoFill = cardsArr.map((item) => {
-    return item.name;
-  });
-
+  const ItemPage = (id) => {
+    cardsArr.filter((item) => item._id !== id);
+    history.push(`/nike/card/${id}`);
+  };
   return (
     <Fragment>
       <nav className="navbar navbar-expand-lg navbar-light ">
@@ -56,64 +54,45 @@ const NikeStore = () => {
           </ul>
         </div>
       </nav>
-
-      <Autocomplete
-        style={{ width: "33%", margin: "1%" }}
-        disablePortal
-        id="combo-box-demo"
-        value={filter}
-        options={autoFill}
-        sx={{ width: 300 }}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label="Search your Shoes"
-            onChange={(e) => searchText(e)}
-          />
-        )}
-      />
+      <div>
+        <br />
+        <Autocomplete
+          style={{ width: "33%", margin: "1%" }}
+          value={filter}
+          onChange={(event, newValue) => {
+            setFilter(newValue);
+          }}
+          inputValue={inputValue}
+          onInputChange={(event, newInputValue) => {
+            setInputValue(newInputValue);
+          }}
+          id="controllable-states-demo"
+          options={autoFill}
+          sx={{ width: 300 }}
+          renderInput={(params) => (
+            <TextField {...params} label="Search your shoes" />
+          )}
+        />
+      </div>
       <br />
       <div className="row justify-content-center">
         {dataSearch.map((item, index) => {
           return (
             <div key={index} className="col-11 col-md-6 col-lg-3 mx-0 mb-4">
               <div className="card p-0 overflow-hidden h-100 shadow">
-                <img src={item.image} className="card-img-top" alt="..." />
+                <img
+                  src={item.image}
+                  onClick={() => {
+                    ItemPage(item._id);
+                  }}
+                  style={{ cursor: "-webkit-grab" }}
+                  className="card-img-top"
+                  alt="..."
+                />
                 <div className="card-body">
                   <h5 className="card-title">{item.name}</h5>
                   <p className="card-text">{item.description}</p>
-                  <p className="card-text">${item.phone}</p>
-                  {/* <CardActions
-                      disableSpacing
-                      style={{
-                        justifyContent: "space-between",
-                        margin: "0 auto",
-                        width: "50%",
-                        display: "flex",
-                      }}
-                      color="secondary"
-                    >
-                      <IconButton
-                        color="secondary"
-                        aria-label="Add to Cart"
-                        onClick={() => {
-                          handleRemoveButtonClick();
-                        }}
-                      >
-                        <RemoveShoppingCart />
-                      </IconButton>
-                      <IconButton
-                        to="/nike/cart"
-                        aria-label="Show cart items"
-                        color="secondary"
-                        className="cart"
-                        onClick={() => {
-                          handleBuyButtonClick();
-                        }}
-                      >
-                        <AddShoppingCart />
-                      </IconButton>
-                    </CardActions> */}
+                  <p className="card-text">${item.price}</p>
                 </div>
               </div>
             </div>

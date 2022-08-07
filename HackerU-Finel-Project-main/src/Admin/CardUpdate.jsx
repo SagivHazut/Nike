@@ -5,7 +5,7 @@ import { Fragment } from "react";
 const CardUpdate = (props) => {
   const [name, setName] = useState(props.name);
   const [description, setDescription] = useState(props.description);
-  const [phone, setPhone] = useState(props.phone);
+  const [price, setprice] = useState(props.price);
   const [image, setImage] = useState(props.image);
   const URL = "http://localhost:8181/api/cards/";
 
@@ -15,8 +15,8 @@ const CardUpdate = (props) => {
   const handleDescriptionChange = (ev) => {
     setDescription(ev.target.value);
   };
-  const handlePhoneChange = (ev) => {
-    setPhone(ev.target.value);
+  const handlepriceChange = (ev) => {
+    setprice(ev.target.value);
   };
   const handleImageChange = (ev) => {
     setImage(ev.target.value);
@@ -26,7 +26,7 @@ const CardUpdate = (props) => {
     ev.preventDefault();
     props.onUpdateUser(
       axios
-        .patch(`${URL}${props.id}`, { name, description, phone, image })
+        .patch(`${URL}${props.id}`, { name, description, price, image })
         .then(() => {})
 
         .catch((err) => {
@@ -75,16 +75,16 @@ const CardUpdate = (props) => {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="exampleInputPhone1" className="form-label">
+              <label htmlFor="exampleInputprice1" className="form-label">
                 Price
               </label>
               <br />
               <input
                 type="text"
                 className="form-control"
-                id="exampleInputPhone1"
-                onChange={handlePhoneChange}
-                value={phone}
+                id="exampleInputprice1"
+                onChange={handlepriceChange}
+                value={price}
                 required
               />
             </div>

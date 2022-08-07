@@ -8,7 +8,7 @@ const CardRegister = () => {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [phone, setPhone] = useState("");
+  const [price, setprice] = useState("");
   const [image, setImage] = useState();
   const [image1, setImage1] = useState();
   const [image2, setImage2] = useState();
@@ -21,8 +21,8 @@ const CardRegister = () => {
   const handleDescriptionChange = (ev) => {
     setDescription(ev.target.value);
   };
-  const handlePhoneChange = (ev) => {
-    setPhone(ev.target.value);
+  const handlepriceChange = (ev) => {
+    setprice(ev.target.value);
   };
   const handleImageChange = (ev) => {
     setImage(ev.target.value);
@@ -45,7 +45,7 @@ const CardRegister = () => {
       .post("/cards/men", {
         name,
         description,
-        phone,
+        price,
         image,
         image1,
         image2,
@@ -53,7 +53,7 @@ const CardRegister = () => {
         MenCollation,
       })
       .then((res) => {
-        history.push("/admin/AdminMen", { description, phone, MenCollation });
+        history.push("/admin/AdminMen", { description, price, MenCollation });
       })
       .catch((err) => {
         toast.error(err.response.data);
@@ -99,16 +99,16 @@ const CardRegister = () => {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="exampleInputPhone1" className="form-label">
+            <label htmlFor="exampleInputprice1" className="form-label">
               Price
             </label>{" "}
             <br />
             <input
               type="text"
               className="form-control"
-              id="exampleInputPhone1"
-              onChange={handlePhoneChange}
-              value={phone}
+              id="exampleInputprice1"
+              onChange={handlepriceChange}
+              value={price}
               required
             />
           </div>

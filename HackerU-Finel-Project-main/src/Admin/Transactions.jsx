@@ -68,7 +68,7 @@ export default function Transactions() {
                         style={{ width: "6vw", height: "10vh" }}
                       /> */}
                       {item.item.name}
-                      <br /> {item.item.phone}
+                      <br /> {item.item.price}
                     </p>
                   ))}
                 </div>

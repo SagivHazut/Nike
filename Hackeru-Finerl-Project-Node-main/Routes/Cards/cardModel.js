@@ -13,7 +13,7 @@ const cardSchema = new mongoose.Schema({
     minlength: 10,
     maxlength: 1004,
   },
-  phone: {
+  price: {
     type: String,
     required: true,
     minlength: 2,
@@ -65,6 +65,7 @@ const cardSchema = new mongoose.Schema({
   WomenCollation: {
     type: String,
   },
+  size: { type: Array },
 });
 
 const Card = mongoose.model("Card", cardSchema);

@@ -35,14 +35,14 @@ const WomenStore = (props) => {
     const parsePrice = (x) => parseFloat(x.replace(/^\$/, "")) || 0;
     const sortedStudios = cardsArr
       .slice()
-      .sort((a, b) => parsePrice(b.phone) - parsePrice(a.phone));
+      .sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
     setCardsArr(sortedStudios);
   }
   function itemSortLtH() {
     const parsePrice = (x) => parseFloat(x.replace(/^\$/, "")) || 0;
     const sortedStudios = cardsArr
       .slice()
-      .sort((a, b) => parsePrice(a.phone) - parsePrice(b.phone));
+      .sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
     setCardsArr(sortedStudios);
   }
   return (
@@ -159,7 +159,7 @@ const WomenStore = (props) => {
                     style={{ textAlign: "center" }}
                     className="card-subtitle mb-2 font-bolder"
                   >
-                    ${item.phone}
+                    ${item.price}
                   </h6>
                 </div>
 

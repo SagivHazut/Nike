@@ -42,7 +42,77 @@ const CardInfoPage = (props) => {
             >
               {cardArr.description}
             </p>{" "}
-            <h6 className="card-subtitle mb-2 font-bolder">${cardArr.phone}</h6>
+            <h6 className="card-subtitle mb-2 font-bolder">${cardArr.price}</h6>
+            <div style={{ marginTop: "5%", marginBottom: "5%" }}>
+              <div role="toolbar" aria-label="Toolbar with button groups">
+                <div
+                  class="btn-group mr-3"
+                  role="group"
+                  aria-label="First group"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-Dark"
+                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
+                  >
+                    38
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-Dark"
+                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
+                  >
+                    39
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-Dark"
+                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
+                  >
+                    40
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-Dark"
+                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
+                  >
+                    41
+                  </button>
+                </div>
+              </div>
+              <div role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group" role="group" aria-label="First group">
+                  <button
+                    type="button"
+                    class="btn btn-Dark"
+                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
+                  >
+                    42
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-Dark"
+                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
+                  >
+                    43
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-Dark"
+                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
+                  >
+                    44
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-Dark"
+                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
+                  >
+                    45
+                  </button>
+                </div>
+              </div>
+            </div>
             <div
               style={{
                 justifyContent: "space-evenly",

@@ -17,7 +17,7 @@ const Checkout = (props) => {
   const [shoppingCart, setShoppingCart] = useState([]);
   const history = useHistory();
   const URL = "http://localhost:8181/payments?email=";
-  const itemsPrice = shoppingCart.reduce((a, c) => a + 1 * c.item.phone, 0);
+  const itemsPrice = shoppingCart.reduce((a, c) => a + 1 * c.item.price, 0);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -159,7 +159,7 @@ const Checkout = (props) => {
                               {product.item.name}
                             </TableCell>
                             <TableCell align="right">
-                              ${product.item.phone}
+                              ${product.item.price}
                             </TableCell>
                           </TableRow>
                         ))}

@@ -81,9 +81,10 @@ router.post("/women", auth, async (req, res) => {
     card = {
       name: card.name,
       description: card.description,
-      phone: card.phone,
+      price: card.price,
       size: card.size,
       image: card.image,
+      size: card.size,
       image3: card.image3,
       image2: card.image2,
       image1: card.image1
@@ -125,7 +126,7 @@ router.post("/men", auth, async (req, res) => {
     card = {
       name: card.name,
       description: card.description,
-      phone: card.phone,
+      price: card.price,
       image: card.image,
       image3: card.image3,
       image2: card.image2,
@@ -133,6 +134,7 @@ router.post("/men", auth, async (req, res) => {
         ? card.image
         : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
       MenCollation: card.MenCollation,
+      size: card.size,
       userID: user._id,
       bizNumber,
     };

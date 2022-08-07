@@ -42,32 +42,21 @@ function Userui() {
 
   const addItemToFavoriteCart = (item) => {
     const currentFavoriteCart = [...favoriteCart];
-    currentFavoriteCart.push({ item });
+    currentFavoriteCart.push({ item, date });
     setFavoriteCart(currentFavoriteCart);
   };
 
-  // const arrDate = shoppingCart.map((item) => item.date);
-  // const arrDate2 = shoppingCart.map(() => date);
-  // console.log(arrDate);
-  // console.log(arrDate2);
-  // const RemoveItemToShoppingCart = (id) => {
-  //   const removeFromArr = shoppingCart.filter((item) => item._id === id);
-  //   setShoppingCart(removeFromArr);
-  //   console.log(removeFromArr);
-  // };
-
-  // console.log(shoppingCart);
-
+  const RemoveItemToFavoriteCart = (index) => {
+    const removeItem = favoriteCart.slice(1, index);
+    setFavoriteCart(removeItem);
+  };
+  
   const RemoveItemToShoppingCart = (index) => {
     const remove = shoppingCart.slice(1, index);
     setShoppingCart(remove);
-    console.log(remove);
   };
 
   const clearShoppingCart = () => {
-    history.push("/nike/checkout");
-  };
-  const saveToUser = () => {
     history.push("/nike/checkout");
   };
 
@@ -88,6 +77,11 @@ function Userui() {
     const favorite = window.localStorage.getItem("favorite");
     setFavoriteCart(JSON.parse(favorite));
   }, []);
+
+  const handleClearBasket = () => {
+    window.localStorage.removeItem("product");
+    setShoppingCart([]);
+  };
 
   return (
     <div>
@@ -121,6 +115,7 @@ function Userui() {
                 ShoppingCart={shoppingCart}
                 handleBuyButtonClick={addItemToShoppingCart}
                 handleRemoveButtonClick={RemoveItemToShoppingCart}
+                clearBasket={handleClearBasket}
               />
             )}
           </Box>
@@ -136,10 +131,10 @@ function Userui() {
               ""
             ) : (
               <Favorite
-                saveToUser={saveToUser}
                 FavoriteCart={favoriteCart}
                 handleFavoriteButtonClick={addItemToFavoriteCart}
                 handleBuyButtonClick={addItemToShoppingCart}
+                handleRemoveButtonClick={RemoveItemToFavoriteCart}
               />
             )}
           </Box>

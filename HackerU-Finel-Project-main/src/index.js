@@ -10,7 +10,7 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.js";
 import "react-toastify/dist/ReactToastify.css";
 import store from "./store/index";
 import axios from "axios";
-
+import itemStore from "./store/itemStore"
 axios.defaults.baseURL = "http://localhost:8181/api";
 
 axios.interceptors.request.use((config) => {
@@ -24,7 +24,7 @@ axios.interceptors.request.use((config) => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={store} itemStore={itemStore}>
       <BrowserRouter>
         <App />
       </BrowserRouter>

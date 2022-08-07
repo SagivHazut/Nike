@@ -18,10 +18,15 @@ import { RemoveShoppingCart } from "@material-ui/icons";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 export const ShoppingCartBox = (props) => {
-  const { ShoppingCart, clearShoppingCart, handleRemoveButtonClick } = props;
+  const {
+    ShoppingCart,
+    clearShoppingCart,
+    handleRemoveButtonClick,
+    clearBasket,
+  } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const itemsPrice = ShoppingCart.reduce((a, c) => a + 1 * c.item.phone, 0);
+  const itemsPrice = ShoppingCart.reduce((a, c) => a + 1 * c.item.price, 0);
 
   const handleClick = (event) => {
     if (ShoppingCart.length !== 0) {
@@ -82,7 +87,7 @@ export const ShoppingCartBox = (props) => {
                   <TableCell component="th" scope="row">
                     {props.item.name}
                   </TableCell>
-                  <TableCell align="right">${props.item.phone}</TableCell>
+                  <TableCell align="right">${props.item.price}</TableCell>
                   <TableCell>
                     <CardActions
                       disableSpacing
@@ -125,7 +130,9 @@ export const ShoppingCartBox = (props) => {
             </TableRow>
           </TableBody>
         </Table>
-        <Box sx={{ m: "5px" }}>
+        <Box
+          sx={{ m: "5px", display: "flex", justifyContent: "space-between" }}
+        >
           <Button
             sx={{ ml: "auto", display: "flex" }}
             variant="contained"
@@ -133,6 +140,16 @@ export const ShoppingCartBox = (props) => {
             onClick={handlePayButtonClick}
           >
             Pay
+          </Button>
+          <Button
+            sx={{ display: "flex" }}
+            variant="contained"
+            size="small"
+            onClick={() => {
+              clearBasket();
+            }}
+          >
+            Clear
           </Button>
         </Box>
       </Popover>

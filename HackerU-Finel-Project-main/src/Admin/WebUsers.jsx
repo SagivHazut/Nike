@@ -24,7 +24,7 @@ export default function WebUsers() {
   };
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>Transactions</h1>
+      <h1 style={{ textAlign: "center" }}>All Users</h1>
       <table className="table">
         <thead className="table table-bordered table-dark">
           <tr>
