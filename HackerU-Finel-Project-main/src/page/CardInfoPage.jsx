@@ -52,28 +52,28 @@ const CardInfoPage = (props) => {
                 >
                   <button
                     type="button"
-                    class="btn btn-Dark"
+                    class="btn btn-outline-dark"
                     style={{ width: "5vw", height: "6vh", margin: "3%" }}
                   >
                     38
                   </button>
                   <button
                     type="button"
-                    class="btn btn-Dark"
+                    class="btn btn-outline-dark"
                     style={{ width: "5vw", height: "6vh", margin: "3%" }}
                   >
                     39
                   </button>
                   <button
                     type="button"
-                    class="btn btn-Dark"
+                    class="btn btn-outline-dark"
                     style={{ width: "5vw", height: "6vh", margin: "3%" }}
                   >
                     40
                   </button>
                   <button
                     type="button"
-                    class="btn btn-Dark"
+                    class="btn btn-outline-dark"
                     style={{ width: "5vw", height: "6vh", margin: "3%" }}
                   >
                     41
@@ -84,28 +84,28 @@ const CardInfoPage = (props) => {
                 <div class="btn-group" role="group" aria-label="First group">
                   <button
                     type="button"
-                    class="btn btn-Dark"
+                    class="btn btn-outline-dark"
                     style={{ width: "5vw", height: "6vh", margin: "3%" }}
                   >
                     42
                   </button>
                   <button
                     type="button"
-                    class="btn btn-Dark"
+                    class="btn btn-outline-dark"
                     style={{ width: "5vw", height: "6vh", margin: "3%" }}
                   >
                     43
                   </button>
                   <button
                     type="button"
-                    class="btn btn-Dark"
+                    class="btn btn-outline-dark"
                     style={{ width: "5vw", height: "6vh", margin: "3%" }}
                   >
                     44
                   </button>
                   <button
                     type="button"
-                    class="btn btn-Dark"
+                    class="btn btn-outline-dark"
                     style={{ width: "5vw", height: "6vh", margin: "3%" }}
                   >
                     45
