@@ -29,8 +29,7 @@ export const Favorite = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const c = FavoriteCart.chosenSize;
-  console.log(c);
+ 
   return (
     <>
       <Button

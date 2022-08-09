@@ -18,7 +18,6 @@ const Checkout = (props) => {
   const history = useHistory();
   const URL = "http://localhost:8181/payments?email=";
   const itemsPrice = shoppingCart.reduce((a, c) => a + 1 * c.item.price, 0);
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("emailMessage");
@@ -106,9 +105,9 @@ const Checkout = (props) => {
   }, []);
 
   const clearShoppingCart = () => {
-    window.localStorage.clear("products");
+    window.localStorage.removeItem("product");
+    setShoppingCart([]);
   };
-
   return (
     <div className="checkout " onSubmit={Submit}>
       <section className="py-5 text-center ">
@@ -159,6 +158,9 @@ const Checkout = (props) => {
                               {product.item.name}
                             </TableCell>
                             <TableCell align="right">
+                              {product.chosenSize}
+                            </TableCell>
+                            <TableCell align="right">
                               ${product.item.price}
                             </TableCell>
                           </TableRow>
@@ -177,6 +179,7 @@ const Checkout = (props) => {
                         <TableCell component="th" scope="row">
                           Total price
                         </TableCell>
+
                         <TableCell align="right">${itemsPrice}</TableCell>
                       </TableRow>
                     </TableBody>
@@ -246,7 +249,7 @@ const Checkout = (props) => {
                       onChange={handleCountry}
                       value={country}
                     >
-                      <option>United States</option>
+                      <option>Choose...</option>
                       <option>United States</option>
                     </select>
                     <div className="invalid-feedback">

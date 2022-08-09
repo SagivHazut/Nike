@@ -34,7 +34,6 @@ function Userui() {
   const location = useLocation();
   const history = useHistory();
   const date = new Date();
-  console.log(chosenSize);
 
   const addItemToShoppingCart = (item) => {
     const currentShoppingCart = [...shoppingCart];
@@ -164,6 +163,8 @@ function Userui() {
               path="/nike/checkout"
               component={Checkout}
               ShoppingCart={shoppingCart}
+              ChosenSize={chosenSize}
+
             />
 
             <Route exact path="/nike/women">
@@ -185,6 +186,7 @@ function Userui() {
                 handleBuyButtonClick={addItemToShoppingCart}
                 handleFavoriteButtonClick={addItemToFavoriteCart}
                 handleSizeChange={handleSizeChange}
+                ChosenSize={chosenSize}
               />
             </Route>
             <Route path="/nike/card/:id">

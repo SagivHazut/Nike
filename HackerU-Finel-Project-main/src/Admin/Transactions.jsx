@@ -22,6 +22,7 @@ export default function Transactions() {
       setCardsArr(newCardsArr);
     });
   };
+  console.log(cardsArr);
 
   return (
     <div>
@@ -53,9 +54,23 @@ export default function Transactions() {
                 {item.zip}
               </td>
               <td>
-                Card Name: {item.cardName} <br />
-                Card Number: {item.cardNumber} <br /> Card Expiration :{" "}
-                {item.expiration} <br /> Cvv : {item.cvv}
+                <span>
+                  <b> Card Name: </b>
+                  {item.cardName}{" "}
+                </span>{" "}
+                <br />
+                <span>
+                  <b> Card Number:</b>
+                  {item.cardNumber}{" "}
+                </span>
+                <br />
+                <span>
+                  <b> Card Expiration :</b> {item.expiration}
+                </span>{" "}
+                <br />
+                <span>
+                  <b>Cvv : </b> {item.cvv}
+                </span>
               </td>
               <td>{item.createdAt}</td>
               <td>
@@ -67,8 +82,19 @@ export default function Transactions() {
                         alt=""
                         style={{ width: "6vw", height: "10vh" }}
                       /> */}
-                      {item.item.name}
-                      <br /> {item.item.price}
+                      <span>
+                        <b>Product:</b>
+                        {item.item.name}
+                      </span>
+                      <br />
+                      <span>
+                        <b>Size</b> {item.chosenSize}
+                      </span>
+                      <br />
+                      <span>
+                        <b>Price:</b>
+                        {item.item.price}
+                      </span>
                     </p>
                   ))}
                 </div>
