@@ -28,21 +28,23 @@ import Favorite from "./page/Favorite";
 const SignupPage = React.lazy(() => import("./page/SignupPage"));
 
 function Userui() {
+  const [chosenSize, setChosenSize] = useState("");
   const [shoppingCart, setShoppingCart] = useState([]);
   const [favoriteCart, setFavoriteCart] = useState([]);
   const location = useLocation();
   const history = useHistory();
   const date = new Date();
+  console.log(chosenSize);
 
   const addItemToShoppingCart = (item) => {
     const currentShoppingCart = [...shoppingCart];
-    currentShoppingCart.push({ item, date });
+    currentShoppingCart.push({ item, date, chosenSize });
     setShoppingCart(currentShoppingCart);
   };
 
   const addItemToFavoriteCart = (item) => {
     const currentFavoriteCart = [...favoriteCart];
-    currentFavoriteCart.push({ item, date });
+    currentFavoriteCart.push({ item, date, chosenSize });
     setFavoriteCart(currentFavoriteCart);
   };
 
@@ -50,10 +52,13 @@ function Userui() {
     const removeItem = favoriteCart.slice(1, index);
     setFavoriteCart(removeItem);
   };
-  
+
   const RemoveItemToShoppingCart = (index) => {
     const remove = shoppingCart.slice(1, index);
     setShoppingCart(remove);
+  };
+  const handleSizeChange = (ev) => {
+    setChosenSize(ev.target.value);
   };
 
   const clearShoppingCart = () => {
@@ -61,22 +66,21 @@ function Userui() {
   };
 
   useEffect(() => {
-    window.localStorage.setItem("product", JSON.stringify(shoppingCart));
-  }, [shoppingCart]);
+    const sizing = localStorage.getItem("chosenSize");
+    setChosenSize(JSON.parse(sizing));
 
-  useEffect(() => {
+    const favorite = window.localStorage.getItem("favorite");
+    setFavoriteCart(JSON.parse(favorite));
+
     const product = window.localStorage.getItem("product");
     setShoppingCart(JSON.parse(product));
   }, []);
 
   useEffect(() => {
+    localStorage.setItem("product", JSON.stringify(shoppingCart));
+    window.localStorage.setItem("chosenSize", JSON.stringify(chosenSize));
     window.localStorage.setItem("favorite", JSON.stringify(favoriteCart));
-  }, [favoriteCart]);
-
-  useEffect(() => {
-    const favorite = window.localStorage.getItem("favorite");
-    setFavoriteCart(JSON.parse(favorite));
-  }, []);
+  }, [shoppingCart, chosenSize, favoriteCart]);
 
   const handleClearBasket = () => {
     window.localStorage.removeItem("product");
@@ -116,6 +120,7 @@ function Userui() {
                 handleBuyButtonClick={addItemToShoppingCart}
                 handleRemoveButtonClick={RemoveItemToShoppingCart}
                 clearBasket={handleClearBasket}
+                chosenSize={chosenSize}
               />
             )}
           </Box>
@@ -132,9 +137,11 @@ function Userui() {
             ) : (
               <Favorite
                 FavoriteCart={favoriteCart}
+                ChosenSize={chosenSize}
                 handleFavoriteButtonClick={addItemToFavoriteCart}
                 handleBuyButtonClick={addItemToShoppingCart}
                 handleRemoveButtonClick={RemoveItemToFavoriteCart}
+                handleSizeChange={handleSizeChange}
               />
             )}
           </Box>
@@ -163,24 +170,28 @@ function Userui() {
               <WomenStore
                 handleBuyButtonClick={addItemToShoppingCart}
                 handleFavoriteButtonClick={addItemToFavoriteCart}
+                handleSizeChange={handleSizeChange}
               />
             </Route>
             <Route exact path="/nike/men">
               <MenStore
                 handleBuyButtonClick={addItemToShoppingCart}
                 handleFavoriteButtonClick={addItemToFavoriteCart}
+                handleSizeChange={handleSizeChange}
               />
             </Route>
             <Route exact path="/nike/CardsPanelPage">
               <CardsPanelPage
                 handleBuyButtonClick={addItemToShoppingCart}
                 handleFavoriteButtonClick={addItemToFavoriteCart}
+                handleSizeChange={handleSizeChange}
               />
             </Route>
             <Route path="/nike/card/:id">
               <CardInfoPage
                 handleBuyButtonClick={addItemToShoppingCart}
                 handleFavoriteButtonClick={addItemToFavoriteCart}
+                handleSizeChange={handleSizeChange}
               />
             </Route>
             <Route path="/nike/aboutpage" component={AboutPage} />

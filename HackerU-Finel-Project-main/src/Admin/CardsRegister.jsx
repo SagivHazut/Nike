@@ -5,7 +5,8 @@ import { toast } from "react-toastify";
 
 const CardRegister = () => {
   const history = useHistory();
-
+  const Sizes = [38, 39, 40, 41, 42, 43, 44];
+  const [size, setSize] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setprice] = useState("");
@@ -49,6 +50,7 @@ const CardRegister = () => {
         image,
         image1,
         image2,
+        size,
         image3,
         MenCollation,
       })
@@ -61,6 +63,17 @@ const CardRegister = () => {
         }
       });
   };
+  const handleCheck = (event) => {
+    let updatedList = [...size];
+    if (event.target.size) {
+      updatedList = [...size, event.target.value];
+    } else {
+      updatedList.splice(size.indexOf(event.target.value), 1);
+    }
+    setSize(updatedList);
+  };
+
+  let isChecked = (item) => size.includes(item);
 
   return (
     <div className="wrapper fadeInDown">
@@ -167,6 +180,24 @@ const CardRegister = () => {
               value={image3}
               required
             />
+          </div>
+          <label>Sizes</label>
+          <div
+            className="mb-3"
+            style={{
+              justifyContent: "space-between",
+              display: "flex",
+            }}
+          >
+            <br />
+            {Sizes.map((item, index) => (
+              <div key={index}>
+                <br />
+
+                <input value={item} type="checkbox" onChange={handleCheck} />
+                <span className={isChecked(item)}>{item}</span>
+              </div>
+            ))}
           </div>
           <div className="mb-3" style={{ display: "none" }}>
             <label htmlFor="exampleInputWomenCollation" className="form-label">

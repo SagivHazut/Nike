@@ -87,6 +87,9 @@ export const ShoppingCartBox = (props) => {
                   <TableCell component="th" scope="row">
                     {props.item.name}
                   </TableCell>
+                  <TableCell component="th" scope="row">
+                    {props.chosenSize}
+                  </TableCell>
                   <TableCell align="right">${props.item.price}</TableCell>
                   <TableCell>
                     <CardActions

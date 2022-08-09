@@ -51,21 +51,33 @@ const Footer = () => {
           </Typography>
           <Box sx={{ flexGrow: 0, ml: "auto" }}>
             <Tooltip title="Facebook">
-              <a href="https://www.facebook.com" target="_blank">
+              <a
+                href="https://www.facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FacebookIcon sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                 </FacebookIcon>
               </a>
             </Tooltip>
             <Tooltip title="Instagram">
-              <a href="https://www.instagram.com" target="_blank">
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <InstagramIcon sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                 </InstagramIcon>
               </a>
             </Tooltip>
             <Tooltip title="Twitter">
-              <a href="https://twitter.com" target="_blank">
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <TwitterIcon sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp"></Avatar>
                 </TwitterIcon>

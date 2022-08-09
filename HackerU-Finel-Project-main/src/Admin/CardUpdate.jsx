@@ -8,6 +8,8 @@ const CardUpdate = (props) => {
   const [price, setprice] = useState(props.price);
   const [image, setImage] = useState(props.image);
   const URL = "http://localhost:8181/api/cards/";
+  const Sizes = [38, 39, 40, 41, 42, 43, 44];
+  const [size, setSize] = useState([]);
 
   const handleNameChange = (ev) => {
     setName(ev.target.value);
@@ -26,7 +28,7 @@ const CardUpdate = (props) => {
     ev.preventDefault();
     props.onUpdateUser(
       axios
-        .patch(`${URL}${props.id}`, { name, description, price, image })
+        .patch(`${URL}${props.id}`, { name, description, price, image, size })
         .then(() => {})
 
         .catch((err) => {
@@ -36,6 +38,17 @@ const CardUpdate = (props) => {
         })
     );
   };
+  const handleCheck = (event) => {
+    let updatedList = [...size];
+    if (event.target.size) {
+      updatedList = [...size, event.target.value];
+    } else {
+      updatedList.splice(size.indexOf(event.target.value), 1);
+    }
+    setSize(updatedList);
+  };
+
+  let isChecked = (item) => size.includes(item);
 
   return (
     <Fragment>
@@ -102,7 +115,24 @@ const CardUpdate = (props) => {
                 required
               />
             </div>
+            <label>Sizes</label>
+            <div
+              className="mb-3"
+              style={{
+                justifyContent: "space-between",
+                display: "flex",
+              }}
+            >
+              <br />
+              {Sizes.map((item, index) => (
+                <div key={index}>
+                  <br />
 
+                  <input value={item} type="checkbox" onChange={handleCheck} />
+                  <span className={isChecked(item)}>{item}</span>
+                </div>
+              ))}
+            </div>
             <div style={{ textAlign: "center" }}>
               <button type="submit" className="btn btn-danger btn-lg">
                 Edit

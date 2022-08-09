@@ -29,7 +29,8 @@ export const Favorite = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const c = FavoriteCart.chosenSize;
+  console.log(c);
   return (
     <>
       <Button
@@ -81,6 +82,9 @@ export const Favorite = (props) => {
                   </TableCell>
                   <TableCell component="th" scope="row">
                     {props.item.name}
+                  </TableCell>{" "}
+                  <TableCell component="th" scope="row">
+                    {props.chosenSize}
                   </TableCell>
                   <TableCell align="right">${props.item.price}</TableCell>
                   <TableCell>

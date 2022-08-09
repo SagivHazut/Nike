@@ -2,30 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Checkbox } from "./CheckBox";
-const CardRegister = () => {
-  const Sizes = [
-    { name: "38", checked: false },
-    { name: "39", checked: false },
-    { name: "40", checked: false },
-    { name: "41", checked: false },
-    { name: "42", checked: false },
-    { name: "43", checked: false },
-    { name: "44", checked: false },
-    { name: "45", checked: false },
-    { name: "46", checked: false },
-  ];
-  const [size, setSize] = useState(Sizes);
-  const updateCheckStatus = (index) => {
-    setSize(
-      size.map((topping, currentIndex) =>
-        currentIndex === index
-          ? { ...topping, checked: !topping.checked }
-          : topping
-      )
-    );
-  };
 
+const CardRegister = () => {
+  const Sizes = [38, 39, 40, 41, 42, 43, 44];
+  const [size, setSize] = useState([]);
   const history = useHistory();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -39,11 +19,6 @@ const CardRegister = () => {
   const handleNameChange = (ev) => {
     setName(ev.target.value);
   };
-  const handleSizeChange = (ev) => {
-    setSize(ev.target.value);
-  };
-  console.log(size);
-
   const handleDescriptionChange = (ev) => {
     setDescription(ev.target.value);
   };
@@ -93,6 +68,17 @@ const CardRegister = () => {
         }
       });
   };
+  const handleCheck = (event) => {
+    let updatedList = [...size];
+    if (event.target.size) {
+      updatedList = [...size, event.target.value];
+    } else {
+      updatedList.splice(size.indexOf(event.target.value), 1);
+    }
+    setSize(updatedList);
+  };
+
+  let isChecked = (item) => size.includes(item);
 
   return (
     <div className="wrapper fadeInDown">
@@ -200,22 +186,23 @@ const CardRegister = () => {
               required
             />
           </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputImage1" className="form-label">
-              Size
-            </label>
+          <label>Sizes</label>
+          <div
+            className="mb-3"
+            style={{
+              justifyContent: "space-between",
+              display: "flex",
+            }}
+          >
             <br />
-            <div className="App">
-              {size.map((size, index) => (
-                <Checkbox
-                  key={size.name}
-                  isChecked={size.checked}
-                  checkHandler={() => updateCheckStatus(index)}
-                  label={size.name}
-                  index={index}
-                />
-              ))}
-            </div>
+            {Sizes.map((item, index) => (
+              <div key={index}>
+                <br />
+
+                <input value={item} type="checkbox" onChange={handleCheck} />
+                <span className={isChecked(item)}>{item}</span>
+              </div>
+            ))}
           </div>
           <div className="mb-3" style={{ display: "none" }}>
             <label htmlFor="exampleInputWomenCollation" className="form-label">

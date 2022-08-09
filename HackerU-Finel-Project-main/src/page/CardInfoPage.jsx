@@ -1,27 +1,30 @@
+import * as React from "react";
 import { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import * as React from "react";
 import "photoswipe/dist/photoswipe.css";
 import { Gallery, Item } from "react-photoswipe-gallery";
 
 const CardInfoPage = (props) => {
-  const { id } = useParams();
+  const URL = "http://localhost:8181/api/cards/card/";
   const [cardArr, setCardArr] = useState([]);
-  const { handleBuyButtonClick } = props;
+  const { id } = useParams();
+  const [size, setSize] = useState([]);
+  const { handleBuyButtonClick, handleSizeChange } = props;
 
   useEffect(() => {
     axios
-      .get(`cards/card/${id}`)
+      .get(`${URL}${id}`)
       .then(({ data }) => {
+        setSize(data.size);
         setCardArr(data);
       })
-
       .catch((err) => {});
   }, [id]);
 
   return (
     <div style={{ justifyContent: "space-between", display: "flex" }}>
+      {" "}
       <div style={{ marginLeft: "auto", display: "flex" }}>
         <Fragment key={cardArr.index}>
           <div
@@ -46,70 +49,25 @@ const CardInfoPage = (props) => {
             <div style={{ marginTop: "5%", marginBottom: "5%" }}>
               <div role="toolbar" aria-label="Toolbar with button groups">
                 <div
-                  class="btn-group mr-3"
+                  className="btn-group mr-3"
                   role="group"
                   aria-label="First group"
                 >
-                  <button
-                    type="button"
-                    class="btn btn-outline-dark"
-                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
-                  >
-                    38
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-outline-dark"
-                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
-                  >
-                    39
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-outline-dark"
-                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
-                  >
-                    40
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-outline-dark"
-                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
-                  >
-                    41
-                  </button>
-                </div>
-              </div>
-              <div role="toolbar" aria-label="Toolbar with button groups">
-                <div class="btn-group" role="group" aria-label="First group">
-                  <button
-                    type="button"
-                    class="btn btn-outline-dark"
-                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
-                  >
-                    42
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-outline-dark"
-                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
-                  >
-                    43
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-outline-dark"
-                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
-                  >
-                    44
-                  </button>
-                  <button
-                    type="button"
-                    class="btn btn-outline-dark"
-                    style={{ width: "5vw", height: "6vh", margin: "3%" }}
-                  >
-                    45
-                  </button>
+                  {" "}
+                  {size.map((item, index) => {
+                    return (
+                      <button
+                        key={index}
+                        type="checkbox"
+                        className="btn btn-outline-dark"
+                        style={{ width: "5vw", height: "6vh", margin: "3%" }}
+                        onClick={handleSizeChange}
+                        value={item}
+                      >
+                        {item}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -124,7 +82,7 @@ const CardInfoPage = (props) => {
                   handleBuyButtonClick(cardArr);
                 }}
                 type="button"
-                class="btn btn-dark btn-lg"
+                className="btn btn-dark btn-lg"
               >
                 <h6>Add to Cart</h6>
               </button>
@@ -139,7 +97,7 @@ const CardInfoPage = (props) => {
             }}
           >
             <Gallery>
-              <div class="row">
+              <div className="row">
                 <Item
                   original={cardArr.image1}
                   thumbnail={cardArr.image1}
@@ -173,7 +131,7 @@ const CardInfoPage = (props) => {
                   )}
                 </Item>
               </div>
-              <div class="row">
+              <div className="row">
                 <Item
                   original={cardArr.image3}
                   thumbnail={cardArr.image3}
