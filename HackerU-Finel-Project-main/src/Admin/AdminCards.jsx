@@ -11,7 +11,6 @@ const AdminCards = (props) => {
   const history = useHistory();
   const URL = "http://localhost:8181/api/cards/";
   const [cardsArr, setCardsArr] = useState([]);
-  const IsloggedInRedux = useSelector((state) => state.auth.loggedIn);
   const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
@@ -58,6 +57,7 @@ const AdminCards = (props) => {
       .sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
     setCardsArr(sortedStudios);
   }
+
   return (
     <div>
       <AdminMiniNav />
@@ -174,7 +174,7 @@ const AdminCards = (props) => {
                 </div>
               </div>
 
-              {IsloggedInRedux === true && selectedUser !== null ? (
+              {selectedUser !== null ? (
                 <CardUpdate
                   name={item.name}
                   description={item.description}

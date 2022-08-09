@@ -52,10 +52,21 @@ function Userui() {
     setFavoriteCart(removeItem);
   };
 
-  const RemoveItemToShoppingCart = (index) => {
-    const remove = shoppingCart.slice(1, index);
+  // const RemoveItemToShoppingCart = (index) => {
+  //   const remove = shoppingCart.slice(1, index);
+  //   setShoppingCart(remove);
+  // };
+
+  const c = shoppingCart.map((item) => {
+    return item.date;
+  });
+
+  const RemoveItemToShoppingCart = () => {
+    const remove = shoppingCart.filter(() => shoppingCart !== c);
     setShoppingCart(remove);
+    console.log(remove);
   };
+
   const handleSizeChange = (ev) => {
     setChosenSize(ev.target.value);
   };
@@ -164,7 +175,6 @@ function Userui() {
               component={Checkout}
               ShoppingCart={shoppingCart}
               ChosenSize={chosenSize}
-
             />
 
             <Route exact path="/nike/women">

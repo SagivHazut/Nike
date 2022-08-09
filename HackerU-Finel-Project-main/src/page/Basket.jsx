@@ -106,7 +106,7 @@ export const ShoppingCartBox = (props) => {
                         color="default"
                         aria-label="Add to Cart"
                         onClick={() => {
-                          handleRemoveButtonClick();
+                          handleRemoveButtonClick(item.date);
                         }}
                       >
                         <RemoveShoppingCart />
