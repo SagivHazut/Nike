@@ -52,19 +52,10 @@ function Userui() {
     setFavoriteCart(removeItem);
   };
 
-  // const RemoveItemToShoppingCart = (index) => {
-  //   const remove = shoppingCart.slice(1, index);
-  //   setShoppingCart(remove);
-  // };
-
-  const c = shoppingCart.map((item) => {
-    return item.date;
-  });
-
-  const RemoveItemToShoppingCart = () => {
-    const remove = shoppingCart.filter(() => shoppingCart !== c);
-    setShoppingCart(remove);
-    console.log(remove);
+  const RemoveItemToShoppingCart = (date) => {
+    const newCart = shoppingCart.filter((item) => item.date !== date);
+    setShoppingCart(newCart);
+    console.log(newCart);
   };
 
   const handleSizeChange = (ev) => {

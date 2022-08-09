@@ -23,7 +23,7 @@ const AdminCards = (props) => {
   }, []);
 
   const handleEditUser = (id) => {
-    let newUser = cardsArr.filter((item) => item._id === id);
+    let newUser = cardsArr.find((item) => item._id === id);
     setSelectedUser(newUser);
     console.log(newUser);
   };
@@ -174,7 +174,7 @@ const AdminCards = (props) => {
                 </div>
               </div>
 
-              {selectedUser !== null ? (
+              {selectedUser !== null && selectedUser._id === item._id ? (
                 <CardUpdate
                   name={item.name}
                   description={item.description}
