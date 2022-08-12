@@ -73,11 +73,11 @@ const CardRegister = () => {
     setSize(updatedList);
   };
 
-  let isChecked = (item) => size.includes(item);
+  const isChecked = (item) => size.includes(item);
 
   return (
     <div className="wrapper fadeInDown">
-      <h1>Card Maker</h1>
+      <h1>Item Maker</h1>
       <div id="formContent">
         <form onSubmit={handleSignup}>
           <br />
@@ -214,7 +214,7 @@ const CardRegister = () => {
             />
           </div>
           <button type="submit" className="btn btn-danger">
-            Create a New Card
+            Create a New Item
           </button>
         </form>
 

@@ -22,7 +22,6 @@ export default function Transactions() {
       setCardsArr(newCardsArr);
     });
   };
-  console.log(cardsArr);
 
   return (
     <div>
@@ -75,7 +74,7 @@ export default function Transactions() {
               <td>{item.createdAt}</td>
               <td>
                 <div>
-                  {item.cartItems.map((item, index) => (
+                  {item.cartItems.map((item) => (
                     <p>
                       {/* <img
                         src={item.item.image1}

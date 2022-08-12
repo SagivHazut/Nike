@@ -1,5 +1,4 @@
 import { useState, useEffect, Fragment } from "react";
-import { useSelector } from "react-redux";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import CardUpdate from "./CardUpdate";
@@ -7,11 +6,12 @@ import { AdminMiniNav } from "./AdminMiniNav";
 import { Button } from "@material-ui/core";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+
 const AdminCards = (props) => {
   const history = useHistory();
   const URL = "http://localhost:8181/api/cards/";
   const [cardsArr, setCardsArr] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedItems, setSelectedItems] = useState(null);
 
   useEffect(() => {
     axios
@@ -24,8 +24,7 @@ const AdminCards = (props) => {
 
   const handleEditUser = (id) => {
     let newUser = cardsArr.find((item) => item._id === id);
-    setSelectedUser(newUser);
-    console.log(newUser);
+    setSelectedItems(newUser);
   };
 
   const handleUpdateUser = (id) => {
@@ -33,7 +32,7 @@ const AdminCards = (props) => {
     setCardsArr(newCardsArr);
     axios.get("/cards/allCards").then(({ data }) => {
       setCardsArr(data);
-      setSelectedUser(null);
+      setSelectedItems(null);
     });
   };
 
@@ -159,7 +158,7 @@ const AdminCards = (props) => {
                     variant="outlined"
                     color="error"
                     type="button"
-                    className="btn btn-outline-primary"
+                    className="btn btn-outline-default"
                     onClick={() => handleEditUser(item._id)}
                   >
                     Edit
@@ -174,7 +173,7 @@ const AdminCards = (props) => {
                 </div>
               </div>
 
-              {selectedUser !== null && selectedUser._id === item._id ? (
+              {selectedItems !== null && selectedItems._id === item._id ? (
                 <CardUpdate
                   name={item.name}
                   description={item.description}

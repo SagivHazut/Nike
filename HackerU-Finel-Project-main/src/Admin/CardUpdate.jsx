@@ -53,7 +53,7 @@ const CardUpdate = (props) => {
   return (
     <Fragment>
       <div className="wrapper fadeInDown">
-        <h1>Edit Your Card</h1>
+        <h1>Edit Your Item</h1>
         <div id="formContent">
           <form onSubmit={handleUpdate}>
             <br />

@@ -29,7 +29,7 @@ const Admin = () => {
         />
         <AuthGuardAdminRoute path="/admin/WebUsers" component={WebUsers} />
         <AuthGuardAdminRoute path="/admin/adminCards" component={AdminCards} />
-        <Redirect to="/admin/transactions" />
+        <Redirect to="/admin/WebUsers" />
         <AuthGuardAdminRoute
           path="/admin/womencardregister"
           component={WomenCardRegister}

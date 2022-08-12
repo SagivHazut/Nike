@@ -1,5 +1,4 @@
 import { useState, useEffect, Fragment } from "react";
-import { useSelector } from "react-redux";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import CardUpdate from "./CardUpdate";
@@ -10,13 +9,9 @@ import { Carousel } from "react-responsive-carousel";
 
 const AdminWomen = (props) => {
   const history = useHistory();
-
   const URL = "http://localhost:8181/api/cards/";
-  const userInfoRedux = useSelector((state) => state.auth.userData);
   const [cardsArr, setCardsArr] = useState([]);
-  const IsloggedInRedux = useSelector((state) => state.auth.loggedIn);
-  const [userArr] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
+  const [selectedItems, setSelectedItems] = useState(null);
 
   useEffect(() => {
     axios
@@ -32,11 +27,8 @@ const AdminWomen = (props) => {
   });
 
   const handleEditUser = (id) => {
-    let newUser = userArr.find((item) => {
-      return item._id === id;
-    });
-
-    setSelectedUser({ ...newUser });
+    let newUser = cardsArr.find((item) => item._id === id);
+    setSelectedItems(newUser);
   };
 
   const handleUpdateUser = (id) => {
@@ -44,7 +36,7 @@ const AdminWomen = (props) => {
     setCardsArr(newCardsArr);
     axios.get("/cards/allCards").then(({ data }) => {
       setCardsArr(data);
-      setSelectedUser(null);
+      setSelectedItems(null);
     });
   };
 
@@ -171,7 +163,7 @@ const AdminWomen = (props) => {
                     color="error"
                     type="button"
                     className="btn btn-outline-primary"
-                    onClick={handleEditUser}
+                    onClick={() => handleEditUser(item._id)}
                   >
                     Edit
                   </Button>
@@ -185,9 +177,7 @@ const AdminWomen = (props) => {
                 </div>
               </div>
 
-              {userInfoRedux._id === item.userID &&
-              IsloggedInRedux === true &&
-              selectedUser !== null ? (
+              {selectedItems !== null && selectedItems._id === item._id ? (
                 <CardUpdate
                   name={item.name}
                   description={item.description}

@@ -15,6 +15,7 @@ const CardRegister = () => {
   const [image2, setImage2] = useState();
   const [image3, setImage3] = useState();
   const [WomenCollation, setWomenCollation] = useState("womenCollation");
+  console.log(size);
 
   const handleNameChange = (ev) => {
     setName(ev.target.value);
@@ -73,7 +74,7 @@ const CardRegister = () => {
     if (event.target.size) {
       updatedList = [...size, event.target.value];
     } else {
-      updatedList.splice(size.indexOf(event.target.value), 1);
+      updatedList.splice(size.indexOf(event.target.value), 2);
     }
     setSize(updatedList);
   };
@@ -82,7 +83,7 @@ const CardRegister = () => {
 
   return (
     <div className="wrapper fadeInDown">
-      <h1>Card Maker</h1>
+      <h1>Item Maker</h1>
       <div id="formContent">
         <form onSubmit={handleSignup}>
           <br />
@@ -198,7 +199,6 @@ const CardRegister = () => {
             {Sizes.map((item, index) => (
               <div key={index}>
                 <br />
-
                 <input value={item} type="checkbox" onChange={handleCheck} />
                 <span className={isChecked(item)}>{item}</span>
               </div>
@@ -224,7 +224,7 @@ const CardRegister = () => {
           </div>
 
           <button type="submit" className="btn btn-danger">
-            Create a New Card
+            Create a New Item
           </button>
         </form>
 

@@ -163,37 +163,38 @@ const WomenStore = (props) => {
                     ${item.price}
                   </h6>
                 </div>
-                <div style={{}}>
-                  <div role="toolbar" aria-label="Toolbar with button groups">
-                    <select
-                      className="btn-group mr-1"
-                      role="group"
-                      aria-label="First group"
-                      style={{
-                        margin: "0 auto",
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
-                    >
-                      {item.size.map((item, index) => {
-                        return (
-                          <option
-                            key={index}
-                            type="checkbox"
-                            className="btn btn-outline-dark"
-                            style={{
-                              margin: "0 auto",
-                              display: "flex",
-                              justifyContent: "center",
-                            }}
-                            onClick={handleSizeChange}
-                            value={item}
-                          >
-                            {item}
-                          </option>
-                        );
-                      })}
-                    </select>
+                <div role="toolbar" aria-label="Toolbar with button groups">
+                  <div
+                    className="btn-group mr-3"
+                    role="group"
+                    aria-label="First group"
+                    style={{
+                      width: "2vw",
+                      justifyContent: "center",
+                      display: "flex",
+                      margin: "0 auto",
+                      justifyItems: "center",
+                    }}
+                  >
+                    {" "}
+                    {item.size.map((item, index) => {
+                      return (
+                        <button
+                          key={index}
+                          type="checkbox"
+                          className="btn btn-outline-dark"
+                          style={{
+                            width: "2vw",
+                            justifyContent: "center",
+                            display: "flex",
+                          }}
+                          onClick={handleSizeChange}
+                          value={item}
+                        >
+                          {item}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
                 <CardActions
