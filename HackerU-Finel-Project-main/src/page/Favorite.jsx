@@ -29,7 +29,7 @@ export const Favorite = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
- 
+
   return (
     <>
       <Button
@@ -101,7 +101,7 @@ export const Favorite = (props) => {
                         color="default"
                         aria-label="Add to Cart"
                         onClick={() => {
-                          handleRemoveButtonClick(item.date);
+                          handleRemoveButtonClick(props.date);
                         }}
                       >
                         <ThumbDownOffAltIcon />

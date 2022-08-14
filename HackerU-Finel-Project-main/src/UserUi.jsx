@@ -47,15 +47,14 @@ function Userui() {
     setFavoriteCart(currentFavoriteCart);
   };
 
-  const RemoveItemToFavoriteCart = (index) => {
-    const removeItem = favoriteCart.slice(1, index);
+  const RemoveItemToFavoriteCart = (date) => {
+    const removeItem = favoriteCart.filter((item) => item.date !== date);
     setFavoriteCart(removeItem);
   };
 
   const RemoveItemToShoppingCart = (date) => {
     const newCart = shoppingCart.filter((item) => item.date !== date);
     setShoppingCart(newCart);
-    console.log(newCart);
   };
 
   const handleSizeChange = (ev) => {
