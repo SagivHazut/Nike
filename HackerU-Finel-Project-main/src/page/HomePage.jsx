@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
+
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from "react-responsive-carousel";
 import "./HomePage.css";
-import { Fragment } from "react";
+
+import { Carousel } from "react-responsive-carousel";
 import { NavLink } from "react-router-dom";
 
 import jordan from "../../src/assets/jordan.svg";

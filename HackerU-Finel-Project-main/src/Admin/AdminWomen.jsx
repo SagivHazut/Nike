@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import CardUpdate from "./CardUpdate";
@@ -7,7 +7,7 @@ import { Button } from "@material-ui/core";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
-const AdminWomen = (props) => {
+const AdminWomen = () => {
   const history = useHistory();
   const URL = "http://localhost:8181/api/cards/";
   const [cardsArr, setCardsArr] = useState([]);

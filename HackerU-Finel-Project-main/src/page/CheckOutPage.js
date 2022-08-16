@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
-const Checkout = (props) => {
+const Checkout = () => {
   const [shoppingCart, setShoppingCart] = useState([]);
   const history = useHistory();
   const URL = "http://localhost:8181/payments?email=";
@@ -79,14 +79,11 @@ const Checkout = (props) => {
         cvv,
         cartItems,
       })
-      .then((res) => {
+      .then(() => {
         ev.preventDefault();
-        axios.get(`${URL}${email}`, { email, cartItems }).then((res) => {
-          history.push(
-            "/nike/home",
-            toast.success("Email sent Successfully"),
-            clearShoppingCart()
-          );
+        axios.get(`${URL}${email}`, { email, cartItems }).then(() => {
+          handleClearBasket();
+          history.push("/nike/home", toast.success("Email sent Successfully"));
         });
       })
       .catch((err) => {
@@ -104,10 +101,11 @@ const Checkout = (props) => {
     setEmail(JSON.parse(emailMessage));
   }, []);
 
-  const clearShoppingCart = () => {
+  const handleClearBasket = () => {
     window.localStorage.removeItem("product");
     setShoppingCart([]);
   };
+
   return (
     <div className="checkout " onSubmit={Submit}>
       <section className="py-5 text-center ">
@@ -347,7 +345,7 @@ const Checkout = (props) => {
                       name="paymentMethod"
                       type="radio"
                       className="form-check-input"
-                      checked
+                      defaultChecked
                       required
                     />
                     <label className="form-check-label" htmlFor="card">

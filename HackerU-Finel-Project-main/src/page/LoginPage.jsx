@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Joi from "joi-browser";
@@ -9,7 +9,6 @@ import loginSchema from "../validation/login.validation";
 import { authActions } from "../store/auth";
 import "./LoginPage.css";
 import NikeLogo from "../assets/nikelogo.png";
-import { NavLink } from "react-router-dom";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");

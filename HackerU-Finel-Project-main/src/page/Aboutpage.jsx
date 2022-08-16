@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import "./Aboutpage.css";
 import bgcvideo from "../../src/assets/Nike_ What's Your Motivation_.mp4";
 import runners from "../../src/assets/Nike-Eliud-About-Innovation_original.jpg";

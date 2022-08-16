@@ -1,10 +1,10 @@
+import React from "react";
 import { NavLink } from "react-router-dom";
 import "./NavBarComponent.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../store/auth";
-import { useSelector } from "react-redux";
 
-const NavBarComponent = (props) => {
+const NavBarComponent = () => {
   const dispatch = useDispatch();
   const IsloggedInRedux = useSelector((state) => state.auth.loggedIn);
 

@@ -1,9 +1,8 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
-import { useHistory } from "react-router-dom";
 
 const NikeStore = () => {
   const [cardsArr, setCardsArr] = useState([]);

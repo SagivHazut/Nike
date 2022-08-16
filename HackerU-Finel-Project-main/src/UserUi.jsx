@@ -1,8 +1,12 @@
-import React, { Suspense } from "react";
-import { Route, Switch, Redirect, useLocation } from "react-router-dom";
+import React, { Suspense, useState, useEffect } from "react";
+import {
+  Route,
+  Switch,
+  Redirect,
+  useLocation,
+  useHistory,
+} from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { Box } from "@mui/material";
 import { ShoppingCartBox } from "./page/Basket";
 import "./App.css";
@@ -61,7 +65,7 @@ function Userui() {
     setChosenSize(ev.target.value);
   };
 
-  const clearShoppingCart = () => {
+  const handlePay = () => {
     history.push("/nike/checkout");
   };
 
@@ -115,7 +119,7 @@ function Userui() {
               ""
             ) : (
               <ShoppingCartBox
-                clearShoppingCart={clearShoppingCart}
+                handlePay={handlePay}
                 ShoppingCart={shoppingCart}
                 handleBuyButtonClick={addItemToShoppingCart}
                 handleRemoveButtonClick={RemoveItemToShoppingCart}
@@ -163,9 +167,12 @@ function Userui() {
             <AuthGuardRoute
               path="/nike/checkout"
               component={Checkout}
-              ShoppingCart={shoppingCart}
-              ChosenSize={chosenSize}
-            />
+              handleClearBasket={handleClearBasket}
+            ></AuthGuardRoute>
+
+            <Route exact path="/nike/checkout">
+              <Checkout handleClearBasket={handleClearBasket} />
+            </Route>
 
             <Route exact path="/nike/women">
               <WomenStore
@@ -174,6 +181,7 @@ function Userui() {
                 handleSizeChange={handleSizeChange}
               />
             </Route>
+
             <Route exact path="/nike/men">
               <MenStore
                 handleBuyButtonClick={addItemToShoppingCart}

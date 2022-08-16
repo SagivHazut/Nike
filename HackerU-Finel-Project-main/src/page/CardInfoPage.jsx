@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "photoswipe/dist/photoswipe.css";

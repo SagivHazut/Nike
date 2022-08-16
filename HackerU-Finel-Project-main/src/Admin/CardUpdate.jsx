@@ -1,7 +1,7 @@
-import { useState } from "react";
+import React,{ useState ,Fragment} from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Fragment } from "react";
+
 const CardUpdate = (props) => {
   const [name, setName] = useState(props.name);
   const [description, setDescription] = useState(props.description);

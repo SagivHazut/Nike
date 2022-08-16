@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React,{ useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -9,7 +9,7 @@ const CardRegister = () => {
   const [size, setSize] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setprice] = useState("");
+  const [price, setPrice] = useState("");
   const [image, setImage] = useState();
   const [image1, setImage1] = useState();
   const [image2, setImage2] = useState();
@@ -23,7 +23,7 @@ const CardRegister = () => {
     setDescription(ev.target.value);
   };
   const handlepriceChange = (ev) => {
-    setprice(ev.target.value);
+    setPrice(ev.target.value);
   };
   const handleImageChange = (ev) => {
     setImage(ev.target.value);

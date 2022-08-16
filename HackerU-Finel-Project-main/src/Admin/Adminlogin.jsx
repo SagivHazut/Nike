@@ -1,9 +1,6 @@
-import React from "react";
-import NikeLogo from "../../src/assets/nikelogo.png";
-import { NavLink } from "react-router-dom";
-import { useState, useRef, useEffect, useCallback } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory, useLocation } from "react-router-dom";
+import React, { useState, useRef, useEffect, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, useLocation, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import Joi from "joi-browser";
@@ -11,11 +8,13 @@ import jwt_decode from "jwt-decode";
 import loginSchema from "../../src/validation/login.validation";
 import { authActions } from "../../src/store/auth";
 import "../../src/page/LoginPage.css";
+import NikeLogo from "../../src/assets/nikelogo.png";
 
 const Adminlogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const emailRef = useRef(null);
+  const userInfoRedux = useSelector((state) => state.auth.userData);
 
   const history = useHistory();
   const location = useLocation();
@@ -55,11 +54,11 @@ const Adminlogin = () => {
           dispatch(authActions.updateUser(decoded));
           localStorage.setItem("tokenKey", res.data.token);
           localStorage.setItem("email", JSON.stringify(email));
-          if (location.state === null) {
-            history.push("/admin/transactions");
+          if (userInfoRedux.biz === false) {
+            history.push("/nike/home");
           } else {
             if (location.state.fromPage) {
-              history.push(location.state.fromPage);
+              history.push("/admin/transactions");
             } else {
               history.push("/admin/transactions");
             }

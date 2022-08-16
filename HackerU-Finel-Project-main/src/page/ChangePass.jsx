@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import NikeLogo from "../assets/nikelogo.png";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
+
 const ChangePass = () => {
   const history = useHistory();
   const URL = "http://localhost:8181/resetPassword?email=";

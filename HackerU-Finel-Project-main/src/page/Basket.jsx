@@ -18,14 +18,11 @@ import { RemoveShoppingCart } from "@material-ui/icons";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 export const ShoppingCartBox = (props) => {
-  const {
-    ShoppingCart,
-    clearShoppingCart,
-    handleRemoveButtonClick,
-    clearBasket,
-  } = props;
+  const { ShoppingCart, handlePay, handleRemoveButtonClick, clearBasket } =
+    props;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+ 
   const itemsPrice = ShoppingCart.reduce((a, c) => a + 1 * c.item.price, 0);
 
   const handleClick = (event) => {
@@ -39,7 +36,7 @@ export const ShoppingCartBox = (props) => {
   };
 
   const handlePayButtonClick = () => {
-    clearShoppingCart();
+    handlePay();
   };
 
   return (
