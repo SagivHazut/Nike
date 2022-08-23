@@ -12,7 +12,7 @@ import AdminWomen from "./Admin/AdminWomen";
 import AdminMen from "./Admin/AdminMen";
 import CardUpdate from "./Admin/CardUpdate";
 import CardRegister from "./Admin/CardsRegister";
-import WebUsers from "./Admin/WebUsers";
+import UserController from "./Admin/UserController";
 
 const Admin = () => {
   return (
@@ -27,7 +27,10 @@ const Admin = () => {
           path="/admin/transactions"
           component={transactions}
         />
-        <AuthGuardAdminRoute path="/admin/WebUsers" component={WebUsers} />
+        <AuthGuardAdminRoute
+          path="/admin/WebUsers"
+          component={UserController}
+        />
         <AuthGuardAdminRoute path="/admin/adminCards" component={AdminCards} />
         <Redirect to="/admin/WebUsers" />
         <AuthGuardAdminRoute

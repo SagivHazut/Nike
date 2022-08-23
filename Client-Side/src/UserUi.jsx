@@ -13,7 +13,7 @@ import "./App.css";
 import AuthGuardRoute from "./components/AuthGuardRoute";
 import NavBarComponent from "./components/NavBarComponent/NavBarComponent";
 import CardInfoPage from "./page/CardInfoPage";
-import CardsPanelPage from "./page/CardsPanelPage";
+import ItemPanelPage from "./page/ItemPanelPage";
 import WomenStore from "./page/Women";
 import MenStore from "./page/Men";
 import HomePage from "./page/HomePage";
@@ -190,7 +190,7 @@ function Userui() {
               />
             </Route>
             <Route exact path="/nike/CardsPanelPage">
-              <CardsPanelPage
+              <ItemPanelPage
                 handleBuyButtonClick={addItemToShoppingCart}
                 handleFavoriteButtonClick={addItemToFavoriteCart}
                 handleSizeChange={handleSizeChange}
